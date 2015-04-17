@@ -3,6 +3,12 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         release
+        debugSigning {
+            keyAlias 'debug'
+            keyPassword 'password'
+            storeFile rootProject.file('debug.keystore')
+            storePassword 'password'
+        }
     }
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
@@ -12,14 +18,15 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
-        resValue "string", "api_key_googlemaps", "AIzaSyBKuX1OHVbB-5u6oj2UhSwQXMd9ljK7VDQ"
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.pro'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             minifyEnabled true
-
+        }
+        debug {
+            signingConfig signingConfigs.debugSigning
         }
     }
     productFlavors {
@@ -33,7 +40,7 @@ android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
 android.signingConfigs.release.storePassword props.keyStorePassword
 android.signingConfigs.release.keyAlias props.keyAlias
 android.signingConfigs.release.keyPassword props.keyAliasPassword
-
+android.defaultConfig.resValue "string", "api_key_googlemaps", props.googleApiKey
 
 repositories {
     //mavenCentral()

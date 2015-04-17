@@ -1,7 +1,10 @@
 
 
 
-keyStore=release.keystore
-keyStorePassword=mysecretpassword
-keyAlias=myapp-release
-keyAliasPassword=mysecretpassword
+keyStore=<KEYSTORE>
+keyStorePassword=<KEYSTORE_PASSWORD>
+keyAlias=<ALIAS>
+keyAliasPassword=<ALIAS_PASSWORD>
+
+
+googleApiKey=<GOOGLE_API_KEY>
