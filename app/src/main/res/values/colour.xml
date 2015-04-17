@@ -1,0 +1,27 @@
+<resources>
+
+    <color name="cyfm_black">#000</color>
+    <color name="cyfm_white">#FFF</color>
+    <color name="cyfm_background_light">#607D8B</color>
+    <color name="cyfm_background_dark">#263238</color>
+
+    <color name="cyfm_red_light">#F44336</color>
+    <color name="cyfm_red_dark">#D32F2F</color>
+
+    <color name="cyfm_indigo_light">#3F51B5</color>
+    <color name="cyfm_indigo_dark">#303F9F</color>
+
+    <color name="cyfm_yellow_light">#FFEB3B</color>
+    <color name="cyfm_yellow_dark">#FBC02D</color>
+
+    <color name="cyfm_orange_light">#Ff5722</color>
+    <color name="cyfm_orange_dark">#E64A19</color>
+
+    <color name="cyfm_green_light">#009688</color>
+    <color name="cyfm_green_dark">#00796B</color>
+
+    <color name="cyfm_blue_light">#03A9F4</color>
+    <color name="cyfm_blue_dark">#0288D1</color>
+
+
+</resources>

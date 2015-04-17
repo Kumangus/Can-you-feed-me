@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release
+    }
+    compileSdkVersion 22
+    buildToolsVersion "21.1.2"
+    defaultConfig {
+        applicationId "net.roughdesign.canyoufeedme"
+        minSdkVersion 10
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        resValue "string", "api_key_googlemaps", "AIzaSyBKuX1OHVbB-5u6oj2UhSwQXMd9ljK7VDQ"
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+
+        }
+    }
+    productFlavors {
+    }
+}
+
+
+def props = new Properties()
+props.load(new FileInputStream(rootProject.file("release.keys")))
+android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
+android.signingConfigs.release.storePassword props.keyStorePassword
+android.signingConfigs.release.keyAlias props.keyAlias
+android.signingConfigs.release.keyPassword props.keyAliasPassword
+
+
+repositories {
+    //mavenCentral()
+    maven {
+        url "https://repository-achartengine.forge.cloudbees.com/snapshot/"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.opencsv:opencsv:3.3'
+    compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'org.achartengine:achartengine:1.2.0'
+}

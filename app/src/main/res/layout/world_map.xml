@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".activities.StartupActivity"
+             android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".StartupActivity"
+                android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <fragment
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/world_map.map.height"
+                android:id="@+id/world_map.map"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/world_map.automatic.label"
+                android:text="@string/world_map.searching"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/margin.vertical.small"
+                android:layout_marginTop="@dimen/margin.vertical.big"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/world_map.to_select_manual"
+                android:id="@+id/textView"
+                android:layout_marginLeft="@dimen/margin.horizontal.big"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/world_map.manual.selector"
+                android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/global.continue"
+                android:id="@+id/world_map.to_country_detail"
+                android:layout_gravity="right"
+                android:paddingEnd="@dimen/margin.vertical.small"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
