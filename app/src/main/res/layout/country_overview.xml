@@ -111,7 +111,7 @@
             android:layout_alignParentStart="false"
             android:layout_alignParentBottom="true"
             android:id="@+id/country_overview.toolbar"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <FrameLayout
                 android:layout_width="fill_parent"
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView2"
-                    android:src="@drawable/icon_calendar"
+                    android:src="@drawable/icon_date"
                     android:layout_gravity="center_horizontal"/>
             </FrameLayout>
 
@@ -159,12 +159,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/country_overview.result__no"
             android:id="@+id/country_overview.judgement_text"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentBottom="false"
             android:layout_centerHorizontal="true"
             android:layout_alignParentEnd="false"
             android:visibility="invisible"
             android:layout_marginBottom="@dimen/margin.horizontal.big"
-            />
+            android:layout_above="@+id/country_overview.toolbar"/>
 
         <ImageView
             android:layout_width="fill_parent"
@@ -181,7 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/country_overview__judgement__progress"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
 
     </RelativeLayout>

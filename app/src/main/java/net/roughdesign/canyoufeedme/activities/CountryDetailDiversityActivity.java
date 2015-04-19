@@ -1,8 +1,11 @@
 package net.roughdesign.canyoufeedme.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
@@ -23,6 +26,7 @@ public class CountryDetailDiversityActivity extends FragmentActivity
 
 
     private FrameLayout chartFrame;
+    private ProgressBar progressBar;
     private GraphicalView chartView;
 
     private DefaultRenderer defaultRenderer = new DefaultRenderer();
@@ -47,8 +51,15 @@ public class CountryDetailDiversityActivity extends FragmentActivity
     protected void onResume()
         {
         super.onResume();
-        updateChartView();
+        new Handler().postDelayed(new Runnable()
+        {
+        public void run()
+            {
+            updateChartView();
+            }
+        }, 500);
         }
+
 
     // =============================================================================================
     // Methods
@@ -56,6 +67,7 @@ public class CountryDetailDiversityActivity extends FragmentActivity
     private void assignGuiElements()
         {
         chartFrame = (FrameLayout) findViewById(R.id.country_detail__diversity_graphic);
+        progressBar = (ProgressBar) findViewById(R.id.country_detail__diversity__progress_bar);
         }
 
     private void setupChartRenderer()
@@ -100,13 +112,9 @@ public class CountryDetailDiversityActivity extends FragmentActivity
         {
         if (chartView == null)
             {
-            try
-                {
-                chartView = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
-                chartFrame.addView(chartView, 0);
-                }
-                catch (Exception e)
-                    {}
+            chartView = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
+            progressBar.setVisibility(View.GONE);
+            chartFrame.addView(chartView, 0);
             }
         else
             {
