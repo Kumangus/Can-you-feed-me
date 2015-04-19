@@ -153,7 +153,7 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         endResult.setText(Long.toString(endResultValue));
         progressBar.setVisibility(View.GONE);
         judgement.setVisibility(View.VISIBLE);
-        judgementText.setVisibility(View.VISIBLE);
+        //judgementText.setVisibility(View.VISIBLE);
         if (endResultValue > 0)
             {
             judgement.setImageResource(R.drawable.icon_yes);

@@ -173,15 +173,16 @@
             android:src="@drawable/icon_no"
             android:contentDescription="@string/global.empty_value"
             android:layout_alignParentTop="true"
-            android:layout_above="@+id/country_overview.judgement_text"
-            android:visibility="invisible"/>
+            android:layout_above="@+id/country_overview.toolbar"
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/margin.vertical.small"/>
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/country_overview__judgement__progress"
-            android:visibility="visible"/>
+            android:visibility="invisible"/>
 
 
     </RelativeLayout>
