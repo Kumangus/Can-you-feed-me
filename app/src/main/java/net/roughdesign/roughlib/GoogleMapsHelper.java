@@ -29,6 +29,10 @@ public class GoogleMapsHelper
     // =============================================================================================
     // Public methods
     // =============================================================================================
+
+    /**
+     * @return A CameraUpdate to show the current Country, or null
+     */
     static public CameraUpdate getCameraUpdate(Context context, String countryCode)
         {
         LatLngBounds countryBox = GoogleMapsHelper.getBoundsForCountryCode(context, countryCode);

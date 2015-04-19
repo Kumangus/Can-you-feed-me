@@ -36,6 +36,7 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
 
     private SupportMapFragment worldMapFragment;
     private TextView automaticLabelView;
+    private TextView manualSelectorHeadline;
     private Spinner manualSpinnerView;
     private Button toCountryDetailView;
 
@@ -82,24 +83,33 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
         {
         worldMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.world_map_map);
         automaticLabelView = (TextView) findViewById(R.id.world_map_automatic_label);
-        manualSpinnerView = (Spinner) findViewById(R.id.world_map_manual_selector);
+        manualSelectorHeadline = (TextView) findViewById(R.id.world_map__manual_selector__headline);
+        setupManualSelectionSpinner();
         toCountryDetailView = (Button) findViewById(R.id.world_map_to_country_detail);
         toCountryDetailView.setOnClickListener(this);
+        }
+
+    private void setupManualSelectionSpinner()
+        {
+        manualSpinnerView = (Spinner) findViewById(R.id.world_map_manual_selector);
+        ArrayAdapter<Country> arrayAdapter = new ArrayAdapter<>(this,
+                R.layout.world_map__list_item, R.id.world_map_list_item_text, Country.objects.getAll());
+        manualSpinnerView.setAdapter(arrayAdapter);
+        manualSpinnerView.setOnItemSelectedListener(new ManualSelectionListener());
         }
 
 
     private void setCountry(Country country)
         {
-        ArrayAdapter<Country> arrayAdapter = new ArrayAdapter<>(this,
-                R.layout.world_map__list_item, R.id.world_map_list_item_text, Country.objects.getAll());
-        manualSpinnerView.setAdapter(arrayAdapter);
-        manualSpinnerView.setOnItemSelectedListener(new ManualSelectionListener());
-        for (int i = 0; i < manualSpinnerView.getAdapter().getCount(); i++)
+        if (country != null)
             {
-            Country countryBuffer = (Country) manualSpinnerView.getItemAtPosition(i);
-            if (countryBuffer.code.equals(country.code))
+            for (int i = 0; i < manualSpinnerView.getAdapter().getCount(); i++)
                 {
-                manualSpinnerView.setSelection(i);
+                Country countryBuffer = (Country) manualSpinnerView.getItemAtPosition(i);
+                if (countryBuffer.code.equals(country.code))
+                    {
+                    manualSpinnerView.setSelection(i);
+                    }
                 }
             }
         }
@@ -115,19 +125,24 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
         protected Country doInBackground(Integer... params)
             {
             Address address = Geography.getAddress(WorldMapActivity.this);
+            if (address == null)
+                return null;
             return Country.objects.getForCountryCode(address.getCountryCode());
             }
+
 
         @Override
         protected void onPostExecute(Country result)
             {
             automaticLabelView.setText(R.string.world_map_cant_find_country);
-            toCountryDetailView.setVisibility(View.VISIBLE);
             if (result != null)
                 {
                 automaticLabelView.setText(R.string.world_map_found_country);
-                setCountry(result);
                 }
+            manualSelectorHeadline.setVisibility(View.VISIBLE);
+            manualSpinnerView.setVisibility(View.VISIBLE);
+            toCountryDetailView.setVisibility(View.VISIBLE);
+            setCountry(result);
             }
         }
 
@@ -140,9 +155,10 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
             {
-            Country country = (Country) parent.getItemAtPosition(pos);
-            CanYouFeedMeApp.cameraUpdate = GoogleMapsHelper.getCameraUpdate(WorldMapActivity.this, country.code);
-            googleMap.animateCamera(CanYouFeedMeApp.cameraUpdate);
+            CanYouFeedMeApp.country = (Country) parent.getItemAtPosition(pos);
+            CanYouFeedMeApp.cameraUpdate = GoogleMapsHelper.getCameraUpdate(WorldMapActivity.this, CanYouFeedMeApp.country.code);
+            if (CanYouFeedMeApp.cameraUpdate != null)
+                googleMap.animateCamera(CanYouFeedMeApp.cameraUpdate);
             }
 
         @Override

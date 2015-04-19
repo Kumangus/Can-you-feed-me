@@ -180,7 +180,8 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/country_overview__judgement__progress"/>
+            android:id="@+id/country_overview__judgement__progress"
+            android:visibility="gone"/>
 
 
     </RelativeLayout>

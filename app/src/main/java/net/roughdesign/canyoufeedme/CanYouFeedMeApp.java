@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.google.android.gms.maps.CameraUpdate;
 
+import net.roughdesign.canyoufeedme.models.country.Country;
 import net.roughdesign.canyoufeedme.models.countrydata.CountryData;
 
 /**
@@ -21,6 +22,7 @@ public class CanYouFeedMeApp extends Application
     // =============================================================================================
     // Variables
     // =============================================================================================
+    static public Country country = null;
     static public CameraUpdate cameraUpdate = null;
     static public CountryData countryData = null;
 

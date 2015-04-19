@@ -100,8 +100,13 @@ public class CountryDetailDiversityActivity extends FragmentActivity
         {
         if (chartView == null)
             {
-            chartView = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
-            chartFrame.addView(chartView, 0);
+            try
+                {
+                chartView = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
+                chartFrame.addView(chartView, 0);
+                }
+                catch (Exception e)
+                    {}
             }
         else
             {

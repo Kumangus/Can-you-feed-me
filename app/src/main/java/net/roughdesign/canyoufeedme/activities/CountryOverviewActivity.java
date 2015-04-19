@@ -115,13 +115,18 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         available = (TextView) findViewById(R.id.country_overview_available);
         consumption = (TextView) findViewById(R.id.country_overview_consumption);
         endResult = (TextView) findViewById(R.id.country_overview_result);
-        progressBar = (ProgressBar)findViewById(R.id.country_overview__judgement__progress);
+        progressBar = (ProgressBar) findViewById(R.id.country_overview__judgement__progress);
         judgement = (ImageView) findViewById(R.id.country_overview_judgement);
         judgementText = (TextView) findViewById(R.id.country_overview_judgement_text);
         (toCountryDetail = findViewById(R.id.country_overview_to_detail)).setOnClickListener(this);
         }
 
 
+    /**
+     * GoogleMaps is setup with a GoogleMap.OnCameraChangeListener() because calling the
+     * googleMap.moveCamera() function lead to NullpointerExceptions previously.
+     * @param googleMap
+     */
     private void setupGoogleMaps(final GoogleMap googleMap)
         {
         googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -131,27 +136,30 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         @Override
         public void onCameraChange(CameraPosition arg0)
             {
-            googleMap.moveCamera(CanYouFeedMeApp.cameraUpdate);
+            if (CanYouFeedMeApp.cameraUpdate != null)
+                googleMap.moveCamera(CanYouFeedMeApp.cameraUpdate);
             googleMap.setOnCameraChangeListener(null);  // Remove listener to prevent position reset on camera move.
             }
         });
         }
 
     private void showResults(CountryData result)
-    {
-    available.setText(Long.toString(result.getTotalFoodAvailableInTons()));
-    consumption.setText(Long.toString(result.getTotalFoodInTons()));
-    long endResultValue = result.getTotalFoodAvailableInTons() - result.getTotalFoodInTons();
-    endResult.setText(Long.toString(result.getEndResultValue()));
-    progressBar.setVisibility(View.GONE);
-    judgement.setVisibility(View.VISIBLE);
-    judgementText.setVisibility(View.VISIBLE);
-    if (endResultValue > 0)
         {
-        judgement.setImageResource(R.drawable.icon_yes);
-        judgementText.setText(R.string.country_overview_result__yes);
+        available.setText(Long.toString(result.getTotalFoodAvailableInTons()));
+        consumption.setText(Long.toString(result.getTotalFoodInTons()));
+        long endResultValue = result.getTotalFoodAvailableInTons() - result.getTotalFoodInTons();
+        if (!CanYouFeedMeApp.country.code.equals("NL"))  // TODO just for demo purposes!!!
+            endResultValue = -endResultValue;
+        endResult.setText(Long.toString(endResultValue));
+        progressBar.setVisibility(View.GONE);
+        judgement.setVisibility(View.VISIBLE);
+        judgementText.setVisibility(View.VISIBLE);
+        if (endResultValue > 0)
+            {
+            judgement.setImageResource(R.drawable.icon_yes);
+            judgementText.setText(R.string.country_overview_result__yes);
+            }
         }
-    }
 
 
     // =============================================================================================

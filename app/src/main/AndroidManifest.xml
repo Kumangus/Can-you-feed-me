@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.StartupActivity"
-            android:label="@string/global.app_name">
+            android:label="@string/global.app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -34,23 +35,28 @@
         </activity>
         <activity
             android:name=".activities.WorldMapActivity"
-            android:label="@string/global.app_name">
+            android:label="@string/global.app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CountryOverviewActivity"
-            android:label="@string/country_overview.title">
+            android:label="@string/country_overview.title"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CountryDetailActivity"
-            android:label="@string/country_detail.title">
+            android:label="@string/country_detail.title"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CountryDetailAmountActivity"
-            android:label="@string/title_activity_country_detail">
+            android:label="@string/title_activity_country_detail"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CountryDetailDiversityActivity"
-            android:label="@string/title_activity_country_detail">
+            android:label="@string/title_activity_country_detail"
+            android:screenOrientation="portrait">
         </activity>
 
 

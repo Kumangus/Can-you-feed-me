@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/world_map.to_select_manual"
-                android:id="@+id/textView"
+                android:id="@+id/world_map__manual_selector__headline"
                 android:layout_marginLeft="@dimen/margin.horizontal.big"
                 />
 
@@ -47,7 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/world_map.manual.selector"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:layout_margin="@dimen/margin.horizontal.small"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -55,7 +57,8 @@
                 android:text="@string/global.continue"
                 android:id="@+id/world_map.to_country_detail"
                 android:layout_gravity="right"
-                android:paddingEnd="@dimen/margin.vertical.small"/>
+                android:paddingEnd="@dimen/margin.vertical.small"
+                android:visibility="invisible"/>
         </LinearLayout>
     </ScrollView>
 
