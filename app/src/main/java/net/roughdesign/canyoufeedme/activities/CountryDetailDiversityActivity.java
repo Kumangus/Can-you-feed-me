@@ -25,9 +25,9 @@ public class CountryDetailDiversityActivity extends FragmentActivity
     static private final String TAG = "CountryDetailActivity";
 
 
-    private FrameLayout chartFrame;
-    private ProgressBar progressBar;
-    private GraphicalView chartView;
+    private FrameLayout chartFrameLOL;
+    private ProgressBar progressBarLOL;
+    private GraphicalView chartViewLOL;
 
     private DefaultRenderer defaultRenderer = new DefaultRenderer();
     private CategorySeries categorySeries = new CategorySeries("LOL");
@@ -66,8 +66,8 @@ public class CountryDetailDiversityActivity extends FragmentActivity
     // =============================================================================================
     private void assignGuiElements()
         {
-        chartFrame = (FrameLayout) findViewById(R.id.country_detail__diversity_graphic);
-        progressBar = (ProgressBar) findViewById(R.id.country_detail__diversity__progress_bar);
+        chartFrameLOL = (FrameLayout) findViewById(R.id.country_detail__diversity_graphic);
+        progressBarLOL = (ProgressBar) findViewById(R.id.country_detail__diversity__progress_bar);
         }
 
     private void setupChartRenderer()
@@ -110,15 +110,15 @@ public class CountryDetailDiversityActivity extends FragmentActivity
 
     private void updateChartView()
         {
-        if (chartView == null)
+        if (chartViewLOL == null)
             {
-            chartView = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
-            progressBar.setVisibility(View.GONE);
-            chartFrame.addView(chartView, 0);
+            chartViewLOL = ChartFactory.getPieChartView(this, categorySeries, defaultRenderer);
+            progressBarLOL.setVisibility(View.GONE);
+            chartFrameLOL.addView(chartViewLOL, 0);
             }
         else
             {
-            chartView.repaint();
+            chartViewLOL.repaint();
             }
         }
 
