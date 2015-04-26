@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.ViewAnimator;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,8 +20,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 
 import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
+import net.roughdesign.canyoufeedme.dialogs.CountryOverviewYearDialog;
 import net.roughdesign.canyoufeedme.models.countrydata.CountryData;
-import net.roughdesign.roughlib.Web;
 
 import org.json.JSONException;
 
@@ -36,14 +37,16 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
     // Variables
     // =============================================================================================
     static private final String TAG = "CountryDetailActivity";
+    static private final int LOAD_ANIMATOR_ANIMATION = 1;
+    static private final int LOAD_ANIMATOR_CONTENT = 0;
 
     private SupportMapFragment worldMapFragment;
+    private TextView countryTitleText;
+    private ViewAnimator loadAnimator;
     private TextView available;
     private TextView consumption;
     private TextView endResult;
-    private ProgressBar progressBar;
     private ImageView judgement;
-    private TextView judgementText;
     private View toCountryDetail;
 
 
@@ -56,22 +59,47 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.country_overview);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
         assignViews();
+        setupViews();
         worldMapFragment.getMapAsync(this);
         }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+        {
+        getMenuInflater().inflate(R.menu.menu__country_overview, menu);
+        return true;
+        }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
         {
-        if (item.getItemId() == android.R.id.home)
+        // TODO check this
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
             {
             onBackPressed();
             return true;
             }
+
+        if (id == R.id.country_overview__settings__change_year)
+            {
+            new CountryOverviewYearDialog().show(getSupportFragmentManager(), TAG);
+            return true;
+            }
+
         return super.onOptionsItemSelected(item);
         }
+
+
 
     @Override
     public void onMapReady(final GoogleMap googleMap)
@@ -112,19 +140,30 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
     private void assignViews()
         {
         worldMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.country_overview_map);
+        countryTitleText = (TextView) findViewById(R.id.country_overview__title__text);
+        loadAnimator = (ViewAnimator) findViewById(R.id.country_overview__load_animator);
         available = (TextView) findViewById(R.id.country_overview_available);
-        consumption = (TextView) findViewById(R.id.country_overview_consumption);
+        consumption = (TextView) findViewById(R.id.country_overview_needed);
         endResult = (TextView) findViewById(R.id.country_overview_result);
-        progressBar = (ProgressBar) findViewById(R.id.country_overview__judgement__progress);
         judgement = (ImageView) findViewById(R.id.country_overview_judgement);
-        judgementText = (TextView) findViewById(R.id.country_overview_judgement_text);
-        (toCountryDetail = findViewById(R.id.country_overview_to_detail)).setOnClickListener(this);
+        toCountryDetail = findViewById(R.id.country_overview_to_detail);
+        }
+
+
+    private void setupViews()
+        {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        countryTitleText.setText(CanYouFeedMeApp.country.name);
+        loadAnimator.setDisplayedChild(LOAD_ANIMATOR_ANIMATION);
+        toCountryDetail.setOnClickListener(this);
         }
 
 
     /**
      * GoogleMaps is setup with a GoogleMap.OnCameraChangeListener() because calling the
      * googleMap.moveCamera() function lead to NullpointerExceptions previously.
+     *
      * @param googleMap
      */
     private void setupGoogleMaps(final GoogleMap googleMap)
@@ -143,24 +182,6 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         });
         }
 
-    private void showResults(CountryData result)
-        {
-        available.setText(Long.toString(result.getTotalFoodAvailableInTons()));
-        consumption.setText(Long.toString(result.getTotalFoodInTons()));
-        long endResultValue = result.getTotalFoodAvailableInTons() - result.getTotalFoodInTons();
-        if (!CanYouFeedMeApp.country.code.equals("NL"))  // TODO just for demo purposes!!!
-            endResultValue = -endResultValue;
-        endResult.setText(Long.toString(endResultValue));
-        progressBar.setVisibility(View.GONE);
-        judgement.setVisibility(View.VISIBLE);
-        //judgementText.setVisibility(View.VISIBLE);
-        if (endResultValue > 0)
-            {
-            judgement.setImageResource(R.drawable.icon_yes);
-            judgementText.setText(R.string.country_overview_result__yes);
-            }
-        }
-
 
     // =============================================================================================
     // Inner class: CountryIdentifier
@@ -177,16 +198,13 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
     // =============================================================================================
     private class GetCountryDetailsAsyncTask extends AsyncTask<CountryIdentifier, Integer, Integer>
         {
-        private String URL = "http://can-you-feed-me.mybluemix.net/api/food?country=1&year=2000";
 
         @Override
         protected Integer doInBackground(CountryIdentifier[] params)
             {
             try
                 {
-                String web = Web.readWebAddress(URL);
-                Log.i(TAG, web);
-                CanYouFeedMeApp.countryData = new CountryData(web);
+                CanYouFeedMeApp.countryData = CountryData.readFromWeb(CanYouFeedMeApp.country.code, CanYouFeedMeApp.year);
                 return 0;
                 } catch (IOException | JSONException e)
                 {
@@ -197,7 +215,16 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
 
         protected void onPostExecute(Integer result)
             {
-            showResults(CanYouFeedMeApp.countryData);
+            available.setText(Double.toString(CanYouFeedMeApp.countryData.getKcalPerPersonPerDay()));
+            consumption.setText(Long.toString(CanYouFeedMeApp.ADVISED_KCAL_PER_PERSON_PER_DAY));
+            double endResultValue = CanYouFeedMeApp.countryData.getKcalPerPersonPerDay() -
+                    CanYouFeedMeApp.ADVISED_KCAL_PER_PERSON_PER_DAY;
+            endResult.setText(Double.toString(endResultValue));
+            if (endResultValue > 0)
+                {
+                judgement.setImageResource(R.drawable.icon_yes);
+                }
+            loadAnimator.setDisplayedChild(LOAD_ANIMATOR_CONTENT);
             }
         }
 

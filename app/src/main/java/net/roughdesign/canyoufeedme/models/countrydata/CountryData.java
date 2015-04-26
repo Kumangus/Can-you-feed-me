@@ -1,9 +1,15 @@
 package net.roughdesign.canyoufeedme.models.countrydata;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import net.roughdesign.canyoufeedme.models.population.Population;
+import net.roughdesign.canyoufeedme.models.production.AnimalProduction;
+import net.roughdesign.canyoufeedme.models.production.CropProduction;
+import net.roughdesign.canyoufeedme.models.supply.AnimalSupply;
+import net.roughdesign.canyoufeedme.models.supply.CropSupply;
+import net.roughdesign.canyoufeedme.models.trade.Trade;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+
+import java.io.IOException;
 
 /**
  * Created by Rough on 12/04/2015.
@@ -14,177 +20,78 @@ public class CountryData
     // =============================================================================================
     // Model fields
     // =============================================================================================
-    public long country;
-    public long year;
-    public long population;
-    public long caloryConsumption;
-
-    public final FoodData fish;
-    public final FoodData animals;
-    public final FoodData animalByProduce;
-    public final FoodData cereals;
-    public final FoodData produce;
-    public final FoodData nonEssentials;
-
-    private ArrayList<FoodData> foodDataList = new ArrayList<>();
+    public final String countryCode;
+    public final int year;
+    public final Population population;
+    public final AnimalProduction animalProduction;
+    public final CropProduction cropProduction;
+    public final AnimalSupply animalSupply;
+    public final CropSupply cropSupply;
+    public final Trade trade;
 
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    public CountryData(String json) throws JSONException
+    private CountryData(String countryCode, int year, Population population, AnimalProduction animalProduction,
+                        CropProduction cropProduction, AnimalSupply animalSupply, CropSupply cropSupply, Trade trade)
         {
-        JSONObject jsonObjectAll = new JSONObject(json);
-        JSONObject jsonObject = jsonObjectAll.getJSONObject("body");
-        this.country = jsonObject.getLong("country");
-        this.year = jsonObject.getLong("year");
-        this.population = jsonObject.getLong("population");
-        this.caloryConsumption = jsonObject.getLong("caloryConsumption");
-
-
-        foodDataList.add(fish = new FoodData("Fish", jsonObject));
-        foodDataList.add(animals = new FoodData("Meat", jsonObject));
-        foodDataList.add(animalByProduce = new FoodData("Aniby", jsonObject));
-        foodDataList.add(cereals = new FoodData("Cereal", jsonObject));
-        foodDataList.add(produce = new FoodData("Produce", jsonObject));
-        foodDataList.add(nonEssentials = new FoodData("Ne", jsonObject));
-
+        this.countryCode = countryCode;
+        this.year = year;
+        this.population = population;
+        this.animalProduction = animalProduction;
+        this.cropProduction = cropProduction;
+        this.animalSupply = animalSupply;
+        this.cropSupply = cropSupply;
+        this.trade = trade;
         }
 
     // =============================================================================================
-    // Getters
+    // Class methods
     // =============================================================================================
-    public ArrayList<FoodData> getFoodDataList()
-        {
-        return foodDataList;
-        }
-
 
     /**
-     * @return The total amount of food produced by the country itself
+     * Reads all the values for a country from the web.
+     *
+     * @param countryCode A 2 letter ISO country code, e.g. "US", "CA" or "DE"
+     * @param year        The year for which to retrieve the data.
+     * @return A Countrydata object, populated with data from the web.
      */
-    public long getTotalProductionInTons()
+    static public CountryData readFromWeb(String countryCode, int year) throws IOException, JSONException
         {
-        long result = 0;
-        for (FoodData foodData : foodDataList)
-            {
-            result += foodData.getProductionInTons();
-            }
-        return result;
-        }
-
-
-    /**
-     * @return The total amount of food imported by the country
-     */
-    public long getTotalImportInTons()
-        {
-        long result = 0;
-        for (FoodData foodData : foodDataList)
-            {
-            result += foodData.getImportInTons();
-            }
-        return result;
-        }
-
-
-    /**
-     * @return The total amount of food exported by the country
-     */
-    public long getTotalExportInTons()
-        {
-        long result = 0;
-        for (FoodData foodData : foodDataList)
-            {
-            result += foodData.getExportInTons();
-            }
-        return result;
-        }
-
-
-    /**
-     * @return The total amount of food available after trade
-     * TODO is this alright?
-     */
-    public long getTotalFoodInTons()
-        {
-        long result = 0;
-        for (FoodData foodData : foodDataList)
-            {
-            result += foodData.getAvailableInTons();
-            }
-        return result;
-        }
-
-
-    /**
-     * @return The amount of calories received per person per day
-     */
-    public long getTotalFoodPerPersonPerDay()
-        {
-        long result = 0;
-        for (FoodData foodData : foodDataList)
-            {
-            result += foodData.getAvailablePerPersonPerDay();
-            }
-        return result;
+        Population population = Population.getFromWeb(countryCode,year);
+        AnimalProduction animalProduction = AnimalProduction.getFromWeb(countryCode, year);
+        CropProduction cropProduction = CropProduction.getFromWeb(countryCode, year);
+        AnimalSupply animalSupply = AnimalSupply.getFromWeb(countryCode, year);
+        CropSupply cropSupply = CropSupply.getFromWeb(countryCode, year);
+        Trade trade = Trade.getFromWeb(countryCode, year);
+        return new CountryData(countryCode, year, population, animalProduction, cropProduction, animalSupply, cropSupply, trade);
         }
 
 
     // =============================================================================================
     // Methods
     // =============================================================================================
-    private long getHighestValue()
+
+    public double getProductionInTons()
         {
-        long result = getTotalProductionInTons();
-        if (getTotalImportInTons() > result)
-            {
-            result = getTotalImportInTons();
-            }
-        if (getTotalExportInTons() > result)
-            {
-            result = getTotalExportInTons();
-            }
-        if (getTotalImportInTons() > result)
-            {
-            result = getTotalImportInTons();
-            }
-        if (getTotalImportInTons() > result)
-            {
-            result = getTotalImportInTons();
-            }
-        if (getTotalImportInTons() > result)
-            {
-            result = getTotalImportInTons();
-            }
-        if (getTotalImportInTons() > result)
-            {
-            result = getTotalImportInTons();
-            }
+        double result = animalProduction.getTotalProductionInT();
+        result += cropProduction.getTotalProductionInT();
         return result;
         }
 
-    /**
-     * @return The total amount of food produced by the country itself
-     */
-    public long getTotalFoodAvailableInTons()
+    public double getSupplyInTons()
         {
-        return getTotalProductionInTons() + getTotalImportInTons() - getTotalExportInTons();
+        double result = animalSupply.getTotalFoodSupplyInTons();
+        result += cropSupply.getTotalFoodSupplyInTons();
+        return result;
         }
 
-
-    /**
-     * @return The total amount of food produced by the country itself
-     */
-    public long getTotalFoodConsumedInTons()
+    public double getKcalPerPersonPerDay()
         {
-        return getTotalProductionInTons() + getTotalImportInTons() - getTotalExportInTons();
-        }
-
-
-    public long getEndResultValue()
-        {
-        return getTotalFoodAvailableInTons() - getTotalFoodInTons();
+        double result = animalSupply.getTotalFoodSupplyInCalPerPersonPerDay();
+        result += cropSupply.getTotalFoodSupplyInCalPerPersonPerDay();
+        return result;
         }
 
     }

@@ -23,12 +23,18 @@
 
     <!-- Country overview screen =============================================================== -->
     <string name="country_overview.title">Country overview</string>
-    <string name="country_overview.available_headline">Food available</string>
-    <string name="country_overview.consumption_headline">Food needed</string>
-    <string name="country_overview.difference_headline">Result</string>
+    <string name="country_overview.available_headline">Available (kcal/person/day)</string>
+    <string name="country_overview.needed_headline">Needed (kcal/person/day)</string>
+    <string name="country_overview.result_headline">Result (kcal/person/day)</string>
     <string name="country_overview.more">More&#8230;</string>
     <string name="country_overview.result__yes">Yes! Your country can feed you!</string>
     <string name="country_overview.result__no">Your country can not feed you.</string>
+    <string name="country_overview__setting__change_year">Change year&#8230;</string>
+    <string name="country_overview__setting__change_trade">Change trade options</string>
+    <string name="country_overview__setting__change_crops">Change crops</string>
+
+    <string name="country_overview__dialog__year__title">Change year&#8230;</string>
+
 
     <!-- Country detail screen ================================================================= -->
     <string name="country_detail.title">Country details</string>
@@ -81,6 +87,11 @@
     </string>
     <string name="dialog.no_internet.positive_button">Retry</string>
         <string name="title_activity_country_detail">CountryDetailActivity</string>
+        <string name="title_activity_test">TESTActivity</string>
+
+    <!-- Auto added ============================================================================ -->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

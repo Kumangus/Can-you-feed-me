@@ -76,11 +76,12 @@ public class CountryDetailAmountActivity extends FragmentActivity
 
     private void populateGuiElements(CountryData countryData)
         {
-        produced.setText(Long.toString(countryData.getTotalProductionInTons()) + " t");
+        // TODO reimplement
+        /*produced.setText(Long.toString(countryData.getTotalProductionInTons()) + " t");
         imported.setText(Long.toString(countryData.getTotalImportInTons()) + " t");
         exported.setText(Long.toString(countryData.getTotalExportInTons()) + " t");
         needed.setText(Long.toString(countryData.getTotalFoodConsumedInTons()) + " t");
-        resultView.setText(Long.toString(countryData.getEndResultValue()) + " t");
+        resultView.setText(Long.toString(countryData.getEndResultValue()) + " t");*/
         }
 
 
@@ -93,7 +94,7 @@ public class CountryDetailAmountActivity extends FragmentActivity
         xyMultipleSeriesRenderer.setApplyBackgroundColor(true);
 
 
-        xyMultipleSeriesRenderer.setXAxisMax(countryData.getFoodDataList().size());
+        //xyMultipleSeriesRenderer.setXAxisMax(countryData.getFoodDataList().size());
         xyMultipleSeriesRenderer.setXAxisMin(-1);
         xyMultipleSeriesRenderer.setBarWidth(100f);
         xyMultipleSeriesRenderer.setBarSpacing(400);
@@ -112,11 +113,12 @@ public class CountryDetailAmountActivity extends FragmentActivity
 
     private void setupChartData(CountryData countryData)
         {
-        addData(1, R.string.country_detail__amount_produced, countryData.getTotalProductionInTons());
+        // TODO reimplement
+        /*addData(1, R.string.country_detail__amount_produced, countryData.getTotalProductionInTons());
         addData(2, R.string.country_detail__amount_imported, countryData.getTotalImportInTons());
         addData(3, R.string.country_detail__amount_exported, -countryData.getTotalExportInTons());
         addData(4, R.string.country_detail__amount_needed, -countryData.getTotalFoodConsumedInTons());
-        addData(5, R.string.country_detail__amount_result, countryData.getEndResultValue());
+        addData(5, R.string.country_detail__amount_result, countryData.getEndResultValue());*/
         }
 
     private void addData(int xPos, int labelResourceId, double value)

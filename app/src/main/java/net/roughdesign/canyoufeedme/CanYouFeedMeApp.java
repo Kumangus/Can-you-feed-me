@@ -22,9 +22,16 @@ public class CanYouFeedMeApp extends Application
     // =============================================================================================
     // Variables
     // =============================================================================================
+    // Standard set to 2000 kcal/person/day, can be changed when the "without trade" option is available.
+    static public final int ADVISED_KCAL_PER_PERSON_PER_DAY = 2000;
+
+
+    static public int year = 2010;  // Standard set to 2013, but can be changed by the user.
+    static public CountryData countryData = null;
+
+
     static public Country country = null;
     static public CameraUpdate cameraUpdate = null;
-    static public CountryData countryData = null;
 
     private int[] primaryColours = new int[6];
 

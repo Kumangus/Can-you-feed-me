@@ -3,6 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="margin.small">16dp</dimen>
+    <dimen name="margin.big">32dp</dimen>
+    <dimen name="margin.huge">128dp</dimen>
+
     <dimen name="margin.vertical.small">16dp</dimen>
     <dimen name="margin.vertical.big">32dp</dimen>
     <dimen name="margin.vertical.huge">128dp</dimen>

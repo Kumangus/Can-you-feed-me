@@ -88,12 +88,13 @@ public class CountryDetailDiversityActivity extends FragmentActivity
 
     private void setupDataSeries(CountryData countryData)
         {
-        addDataItem(R.string.country_detail__diversity_fish, countryData.fish.getAvailablePerPersonPerDay());
+        // TODO reimplement
+        /*addDataItem(R.string.country_detail__diversity_fish, countryData.fish.getAvailablePerPersonPerDay());
         addDataItem(R.string.country_detail__diversity_meat, countryData.animals.getAvailablePerPersonPerDay());
         addDataItem(R.string.country_detail__diversity_animal_byproducts, countryData.animalByProduce.getAvailablePerPersonPerDay());
         addDataItem(R.string.country_detail__diversity_cereals, countryData.cereals.getAvailablePerPersonPerDay());
         addDataItem(R.string.country_detail__diversity_produce, countryData.produce.getAvailablePerPersonPerDay());
-        addDataItem(R.string.country_detail__diversity_non_essentials, countryData.nonEssentials.getAvailablePerPersonPerDay());
+        addDataItem(R.string.country_detail__diversity_non_essentials, countryData.nonEssentials.getAvailablePerPersonPerDay());*/
         }
 
 

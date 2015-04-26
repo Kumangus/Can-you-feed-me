@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="net.roughdesign.canyoufeedme.activities.CountryOverviewActivity">
+    <item android:id="@+id/country_overview__settings__change_year"
+          android:title="@string/country_overview__setting__change_year"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+</menu>

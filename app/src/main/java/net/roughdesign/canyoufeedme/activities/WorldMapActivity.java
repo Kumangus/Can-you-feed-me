@@ -134,6 +134,7 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
         @Override
         protected void onPostExecute(Country result)
             {
+            CanYouFeedMeApp.country = result;
             automaticLabelView.setText(R.string.world_map_cant_find_country);
             if (result != null)
                 {
@@ -155,7 +156,8 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
 
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
             {
-            CanYouFeedMeApp.country = (Country) parent.getItemAtPosition(pos);
+            CanYouFeedMeApp.country = ((Country) parent.getItemAtPosition(pos));
+            // TODO CLEANUP CanYouFeedMeApp.country = (Country) parent.getItemAtPosition(pos);
             CanYouFeedMeApp.cameraUpdate = GoogleMapsHelper.getCameraUpdate(WorldMapActivity.this, CanYouFeedMeApp.country.code);
             if (CanYouFeedMeApp.cameraUpdate != null)
                 googleMap.animateCamera(CanYouFeedMeApp.cameraUpdate);

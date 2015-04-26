@@ -43,8 +43,7 @@ public class CountryManager extends Manager<Country>
             {
             counter++;
             Country country = new Country(counter, nextLine[1], nextLine[0]);
-            if (country.code.equals("NL") || country.code.equals("CA"))
-                this.models.add(country);
+            models.add(country);
             }
         }
 
