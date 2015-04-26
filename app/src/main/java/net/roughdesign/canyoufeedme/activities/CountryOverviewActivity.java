@@ -106,11 +106,7 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         {
         Log.i(TAG, "GoogleMap is ready");
         setupGoogleMaps(googleMap);
-
-        CountryIdentifier countryIdentifier = new CountryIdentifier();
-        countryIdentifier.countryId = 1;
-        countryIdentifier.year = 2000;
-        new GetCountryDetailsAsyncTask().execute(countryIdentifier);
+        new GetCountryDetailsAsyncTask().execute(0);
         }
 
 
@@ -163,8 +159,6 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
     /**
      * GoogleMaps is setup with a GoogleMap.OnCameraChangeListener() because calling the
      * googleMap.moveCamera() function lead to NullpointerExceptions previously.
-     *
-     * @param googleMap
      */
     private void setupGoogleMaps(final GoogleMap googleMap)
         {
@@ -184,23 +178,13 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
 
 
     // =============================================================================================
-    // Inner class: CountryIdentifier
-    // =============================================================================================
-    private class CountryIdentifier
-        {
-        public int countryId;
-        public int year;
-        }
-
-
-    // =============================================================================================
     // Inner class: GetCountryDetailsAsyncTask
     // =============================================================================================
-    private class GetCountryDetailsAsyncTask extends AsyncTask<CountryIdentifier, Integer, Integer>
+    private class GetCountryDetailsAsyncTask extends AsyncTask<Integer, Integer, Integer>
         {
 
         @Override
-        protected Integer doInBackground(CountryIdentifier[] params)
+        protected Integer doInBackground(Integer[] params)
             {
             try
                 {

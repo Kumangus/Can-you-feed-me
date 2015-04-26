@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 
@@ -20,12 +21,15 @@ public class CountryOverviewYearDialog extends DialogFragment
     // Variables
     // =============================================================================================
     static private final String TAG = "CountryOverviewYearDial";
-    static private final String[] YEARS = new String[]{"2000", "2001", "2002"};
+    static private final String[] YEARS = new String[]{"1990", "1991", "1992", "1993", "1994",
+            "1995", "1996", "1997", "1998", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
+            "2007", "2008", "2009", "2010"};
 
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
         {
