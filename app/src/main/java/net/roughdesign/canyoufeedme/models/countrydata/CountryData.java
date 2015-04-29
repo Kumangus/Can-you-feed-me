@@ -73,24 +73,15 @@ public class CountryData
     // Methods
     // =============================================================================================
 
-    public double getProductionInTons()
-        {
-        double result = animalProduction.getTotalProductionInT();
-        result += cropProduction.getTotalProductionInT();
-        return result;
-        }
 
-    public double getSupplyInTons()
-        {
-        double result = animalSupply.getTotalFoodSupplyInTons();
-        result += cropSupply.getTotalFoodSupplyInTons();
-        return result;
-        }
-
+    /**
+     * arg
+     * @return The total amount of edible food rom animals and crops.
+     */
     public double getKcalPerPersonPerDay()
         {
-        double result = animalSupply.getTotalFoodSupplyInCalPerPersonPerDay();
-        result += cropSupply.getTotalFoodSupplyInCalPerPersonPerDay();
+        double result = animalSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
+        result += cropSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
         return result;
         }
 

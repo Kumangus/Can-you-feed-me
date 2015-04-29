@@ -66,6 +66,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api_key_googlemaps" />
 
+        <activity
+            android:name=".DataActivity"
+            android:label="@string/title_activity_data"
+            android:parentActivityName=".activities.WorldMapActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.roughdesign.canyoufeedme.activities.WorldMapActivity" />
+        </activity>
     </application>
 
 </manifest>
