@@ -3,7 +3,9 @@
  */
 package net.roughdesign.canyoufeedme.models.supply;
 
-import net.roughdesign.canyoufeedme.models.DataSet;
+import android.util.Log;
+
+import net.roughdesign.roughlib.Web;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +17,7 @@ import java.util.HashMap;
 /**
  * @author Rough
  */
-public class AnimalSupply extends DataSet
+public class AnimalSupply extends Web
     {
     // ================================================
     // Member keys, see:
@@ -120,9 +122,10 @@ public class AnimalSupply extends DataSet
     static public final int KEY_GRAND_TOTAL = 2901;
 
 
-    // ================================================
-    // CLASS VARIABLES ================================
-    // ================================================
+    // =============================================================================================
+    // Class variables
+    // =============================================================================================
+    static private final String TAG = "AnimalSupply";
     private static final String LINK_BASE = "http://data.fao.org/developers/api/v1/en/resources/faostat/fd-sup-live-fish/facts.json?page=1&pageSize=200";
     private static final String LINK_FILTER = "&filter=cnt.iso2 eq %s and year eq %d";
     private static final String LINK_FIELDS = "&fields=item, item.bk as item_code, m684, m664, m646, m645, m641, m674";
@@ -209,20 +212,34 @@ public class AnimalSupply extends DataSet
      */
     public FoodSupplyValueSet getMilkProductsSupply()
         {
+
+
+        if (entries.get(KEY_MILK_EXCLUDING_BUTTER_1) == null)
+            Log.e(TAG, "KEY_MILK_EXCLUDING_BUTTER_1");
+        if (entries.get(KEY_MILK_WHOLE) == null)
+            Log.e(TAG, "KEY_MILK_WHOLE");
+        if (entries.get(KEY_BUTTER_GHEE) == null)
+            Log.e(TAG, "KEY_BUTTER_GHEE");
+        if (entries.get(KEY_CHEESE) == null)
+            Log.e(TAG, "KEY_CHEESE");
+        if (entries.get(KEY_CREAM) == null)
+            Log.e(TAG, "KEY_CREAM");
+        if (entries.get(KEY_WHEY) == null)
+            Log.e(TAG, "KEY_WHEY");
+
         return FoodSupplyValueSet.combine(
-                entries.get(KEY_MILK_EXCLUDING_BUTTER_2),
+                entries.get(KEY_MILK_EXCLUDING_BUTTER_1),
                 entries.get(KEY_MILK_WHOLE),
                 entries.get(KEY_BUTTER_GHEE),
                 entries.get(KEY_CHEESE),
                 entries.get(KEY_CREAM),
-                entries.get(KEY_FISH_SEAFOOD),
                 entries.get(KEY_WHEY)
         );
         }
 
 
     /**
-     * @return Total supply of seafood.
+     * @return Total supply of edible animal byproducts.
      */
     public FoodSupplyValueSet getEdibleByProducts()
         {

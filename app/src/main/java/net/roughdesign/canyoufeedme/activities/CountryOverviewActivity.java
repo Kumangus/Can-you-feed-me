@@ -22,6 +22,7 @@ import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
 import net.roughdesign.canyoufeedme.dialogs.CountryOverviewYearDialog;
 import net.roughdesign.canyoufeedme.models.countrydata.CountryData;
+import net.roughdesign.canyoufeedme.models.foodbalance.FoodBalance;
 
 import org.json.JSONException;
 
@@ -200,9 +201,9 @@ public class CountryOverviewActivity extends ActionBarActivity implements OnMapR
         protected void onPostExecute(Integer result)
             {
             available.setText(Double.toString(CanYouFeedMeApp.countryData.getKcalPerPersonPerDay()));
-            consumption.setText(Long.toString(CanYouFeedMeApp.ADVISED_KCAL_PER_PERSON_PER_DAY));
+            consumption.setText(Long.toString(FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY));
             double endResultValue = CanYouFeedMeApp.countryData.getKcalPerPersonPerDay() -
-                    CanYouFeedMeApp.ADVISED_KCAL_PER_PERSON_PER_DAY;
+                    FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY;
             endResult.setText(Double.toString(endResultValue));
             if (endResultValue > 0)
                 {

@@ -21,7 +21,7 @@ import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
 import net.roughdesign.canyoufeedme.models.country.Country;
 import net.roughdesign.roughlib.Geography;
-import net.roughdesign.roughlib.GoogleMapsHelper;
+import net.roughdesign.canyoufeedme.helper.GoogleMapsHelper;
 
 /**
  * Created by Rough on 11/04/2015.

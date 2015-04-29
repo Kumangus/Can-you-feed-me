@@ -1,11 +1,6 @@
 package net.roughdesign.canyoufeedme.models.countrydata;
 
-import net.roughdesign.canyoufeedme.models.population.Population;
-import net.roughdesign.canyoufeedme.models.production.AnimalProduction;
-import net.roughdesign.canyoufeedme.models.production.CropProduction;
-import net.roughdesign.canyoufeedme.models.supply.AnimalSupply;
-import net.roughdesign.canyoufeedme.models.supply.CropSupply;
-import net.roughdesign.canyoufeedme.models.trade.Trade;
+import net.roughdesign.canyoufeedme.models.foodbalance.FoodBalance;
 
 import org.json.JSONException;
 
@@ -22,28 +17,34 @@ public class CountryData
     // =============================================================================================
     public final String countryCode;
     public final int year;
-    public final Population population;
-    public final AnimalProduction animalProduction;
-    public final CropProduction cropProduction;
-    public final AnimalSupply animalSupply;
-    public final CropSupply cropSupply;
-    public final Trade trade;
+    public final FoodBalance foodBalance;
+
+    // public final Population population;
+    // public final AnimalProduction animalProduction;
+    // public final CropProduction cropProduction;
+    // public final AnimalSupply animalSupply;
+    // public final CropSupply cropSupply;
+    // public final Trade trade;
 
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    private CountryData(String countryCode, int year, Population population, AnimalProduction animalProduction,
-                        CropProduction cropProduction, AnimalSupply animalSupply, CropSupply cropSupply, Trade trade)
+    private CountryData(String countryCode, int year, FoodBalance foodBalance
+                        // Population population, AnimalProduction animalProduction,
+                        // CropProduction cropProduction, AnimalSupply animalSupply,
+                        // CropSupply cropSupply, Trade trade
+    )
         {
         this.countryCode = countryCode;
         this.year = year;
-        this.population = population;
-        this.animalProduction = animalProduction;
-        this.cropProduction = cropProduction;
-        this.animalSupply = animalSupply;
-        this.cropSupply = cropSupply;
-        this.trade = trade;
+        this.foodBalance = foodBalance;
+        // this.population = population;
+        // this.animalProduction = animalProduction;
+        // this.cropProduction = cropProduction;
+        // this.animalSupply = animalSupply;
+        // this.cropSupply = cropSupply;
+        // this.trade = trade;
         }
 
     // =============================================================================================
@@ -59,13 +60,15 @@ public class CountryData
      */
     static public CountryData readFromWeb(String countryCode, int year) throws IOException, JSONException
         {
-        Population population = Population.getFromWeb(countryCode,year);
-        AnimalProduction animalProduction = AnimalProduction.getFromWeb(countryCode, year);
-        CropProduction cropProduction = CropProduction.getFromWeb(countryCode, year);
-        AnimalSupply animalSupply = AnimalSupply.getFromWeb(countryCode, year);
-        CropSupply cropSupply = CropSupply.getFromWeb(countryCode, year);
-        Trade trade = Trade.getFromWeb(countryCode, year);
-        return new CountryData(countryCode, year, population, animalProduction, cropProduction, animalSupply, cropSupply, trade);
+        FoodBalance foodBalance = FoodBalance.getFromWeb(countryCode,year);
+        // Population population = Population.getFromWeb(countryCode,year);
+        // AnimalProduction animalProduction = AnimalProduction.getFromWeb(countryCode, year);
+        // CropProduction cropProduction = CropProduction.getFromWeb(countryCode, year);
+        // AnimalSupply animalSupply = AnimalSupply.getFromWeb(countryCode, year);
+        // CropSupply cropSupply = CropSupply.getFromWeb(countryCode, year);
+        // Trade trade = Trade.getFromWeb(countryCode, year);
+        // return new CountryData(countryCode, year, population, animalProduction, cropProduction, animalSupply, cropSupply, trade);
+        return new CountryData(countryCode, year, foodBalance);
         }
 
 
@@ -80,9 +83,10 @@ public class CountryData
      */
     public double getKcalPerPersonPerDay()
         {
-        double result = animalSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
-        result += cropSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
-        return result;
+        // double result = animalSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
+        // result += cropSupply.getTotalEdibleSupply().foodSupplyInKcalPerPersonPerDay;
+        // return result;
+        return foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay;
         }
 
     }

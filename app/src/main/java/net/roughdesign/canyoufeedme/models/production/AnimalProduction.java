@@ -5,7 +5,7 @@ package net.roughdesign.canyoufeedme.models.production;
 
 import android.util.Log;
 
-import net.roughdesign.canyoufeedme.models.DataSet;
+import net.roughdesign.roughlib.Web;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @author Rough
  */
-public class AnimalProduction extends DataSet
+public class AnimalProduction extends Web
     {
     // ================================================
     // Member keys, see:
@@ -117,7 +117,7 @@ public class AnimalProduction extends DataSet
         final JSONObject jsonObject = new JSONObject(jsonString);
         final JSONObject result = jsonObject.getJSONObject("result");
         final JSONObject list = result.getJSONObject("list");
-        // TODO fix this
+        // TODO sometimes, "items" is not in the JSON object. What's up with that?
         if(!result.has("items"))
             return;
         final JSONArray entryArray = list.getJSONArray("items");

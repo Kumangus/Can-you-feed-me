@@ -22,7 +22,13 @@ public class FoodSupplyValueSet
     static private final String KEY_PROTEIN_SUPPLY_IN_GRAM_PER_PERSON_PER_DAY = "m674";
 
     // =============================================================================================
-    // MEMBER VARIABLES 
+    // Class variables
+    // =============================================================================================
+    @SuppressWarnings("unused")
+    static private final String TAG = "FoodSupplyValueSet";
+
+    // =============================================================================================
+    // MEMBER VARIABLES
     // =============================================================================================
     public final String displayName;
     public final double fatSupplyInGramPerPersonPerDay;
@@ -73,23 +79,24 @@ public class FoodSupplyValueSet
     static public FoodSupplyValueSet combine(final FoodSupplyValueSet... toAdd)
         {
         double fatSupplyInGramPerPersonPerDay = 0;
-        for (FoodSupplyValueSet entry : toAdd)
-            fatSupplyInGramPerPersonPerDay += entry.fatSupplyInGramPerPersonPerDay;
         double foodSupplyInCalPerPersonPerDay = 0;
-        for (FoodSupplyValueSet entry : toAdd)
-            foodSupplyInCalPerPersonPerDay += entry.foodSupplyInKcalPerPersonPerDay;
         double foodSupplyInGramPerPersonPerDay = 0;
-        for (FoodSupplyValueSet entry : toAdd)
-            foodSupplyInGramPerPersonPerDay += entry.foodSupplyInGramPerPersonPerDay;
         double foodSupplyInKiloPerPersonPerYear = 0;
-        for (FoodSupplyValueSet entry : toAdd)
-            foodSupplyInKiloPerPersonPerYear += entry.foodSupplyInKiloPerPersonPerYear;
         double foodSupplyInTonsTotal = 0;
-        for (FoodSupplyValueSet entry : toAdd)
-            foodSupplyInTonsTotal += entry.foodSupplyInTonsTotal;
         double proteinSupplyInGramPerPersonPerDay = 0;
+
         for (FoodSupplyValueSet entry : toAdd)
-            proteinSupplyInGramPerPersonPerDay += entry.proteinSupplyInGramPerPersonPerDay;
+            {
+            if(entry != null)
+                {
+                fatSupplyInGramPerPersonPerDay += entry.fatSupplyInGramPerPersonPerDay;
+                foodSupplyInCalPerPersonPerDay += entry.foodSupplyInKcalPerPersonPerDay;
+                foodSupplyInGramPerPersonPerDay += entry.foodSupplyInGramPerPersonPerDay;
+                foodSupplyInKiloPerPersonPerYear += entry.foodSupplyInKiloPerPersonPerYear;
+                foodSupplyInTonsTotal += entry.foodSupplyInTonsTotal;
+                proteinSupplyInGramPerPersonPerDay += entry.proteinSupplyInGramPerPersonPerDay;
+                }
+            }
 
         return new FoodSupplyValueSet(
                 "COMBINED",
@@ -105,6 +112,23 @@ public class FoodSupplyValueSet
     // =============================================================================================
     // Member methods
     // =============================================================================================
+    public String toString()
+        {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("fatSupplyInGramPerPersonPerDay: ");
+        stringBuilder.append(fatSupplyInGramPerPersonPerDay);
+        stringBuilder.append("foodSupplyInKcalPerPersonPerDay: ");
+        stringBuilder.append(foodSupplyInKcalPerPersonPerDay);
+        stringBuilder.append("foodSupplyInGramPerPersonPerDay: ");
+        stringBuilder.append(foodSupplyInGramPerPersonPerDay);
+        stringBuilder.append("foodSupplyInKiloPerPersonPerYear: ");
+        stringBuilder.append(foodSupplyInKiloPerPersonPerYear);
+        stringBuilder.append("foodSupplyInTonsTotal: ");
+        stringBuilder.append(foodSupplyInTonsTotal);
+        stringBuilder.append("proteinSupplyInGramPerPersonPerDay: ");
+        stringBuilder.append(proteinSupplyInGramPerPersonPerDay);
 
+        return stringBuilder.toString();
+        }
 
     }

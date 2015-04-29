@@ -7,6 +7,7 @@ import net.roughdesign.roughlib.database.Model;
  */
 public class Country extends Model
     {
+    // TODO maybe this can be combined with country data - it would be logical at least
     // =============================================================================================
     // Variables
     // =============================================================================================

@@ -25,7 +25,7 @@
     <string name="country_overview.title">Country overview</string>
     <string name="country_overview.available_headline">Available (kcal/person/day)</string>
     <string name="country_overview.needed_headline">Needed (kcal/person/day)</string>
-    <string name="country_overview.result_headline">Result (kcal/person/day)</string>
+    <string name="country_overview.result_headline">Surplus/Deficit (kcal/person/day)</string>
     <string name="country_overview.more">More&#8230;</string>
     <string name="country_overview.result__yes">Yes! Your country can feed you!</string>
     <string name="country_overview.result__no">Your country can not feed you.</string>

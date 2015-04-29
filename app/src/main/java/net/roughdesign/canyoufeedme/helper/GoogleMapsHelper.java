@@ -1,4 +1,4 @@
-package net.roughdesign.roughlib;
+package net.roughdesign.canyoufeedme.helper;
 
 import android.content.Context;
 import android.location.Address;

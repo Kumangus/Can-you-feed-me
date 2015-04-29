@@ -3,7 +3,7 @@
  */
 package net.roughdesign.canyoufeedme.models.trade;
 
-import net.roughdesign.canyoufeedme.models.DataSet;
+import net.roughdesign.roughlib.Web;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Rough
  *
  */
-public class Trade extends DataSet
+public class Trade extends Web
     {
     // ================================================
     // Member keys, see:

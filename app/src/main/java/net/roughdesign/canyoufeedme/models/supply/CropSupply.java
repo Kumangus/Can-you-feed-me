@@ -5,7 +5,7 @@ package net.roughdesign.canyoufeedme.models.supply;
 
 import android.util.Log;
 
-import net.roughdesign.canyoufeedme.models.DataSet;
+import net.roughdesign.roughlib.Web;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 /**
  * @author Rough
  */
-public class CropSupply extends DataSet
+public class CropSupply extends Web
     {
     // ================================================
     // Member keys, see:
@@ -25,6 +25,7 @@ public class CropSupply extends DataSet
     // ================================================
 
     // TODO the sums have to be tested
+    // TODO supply handled in FoodBalance now?
 
     // ================================================
     // Keys: Cereals
