@@ -1,12 +1,8 @@
 package net.roughdesign.canyoufeedme;
 
+
 import android.app.Application;
 import android.content.Context;
-
-import com.google.android.gms.maps.CameraUpdate;
-
-import net.roughdesign.canyoufeedme.models.country.Country;
-import net.roughdesign.canyoufeedme.models.countrydata.CountryData;
 
 /**
  * Created by Rough on 11/04/2015.
@@ -22,15 +18,15 @@ public class CanYouFeedMeApp extends Application
     // =============================================================================================
     // Variables
     // =============================================================================================
+    //public Country currentCountry;
 
-    static public int year = 2010;  // Standard set to 2013, but can be changed by the user.
-    static public CountryData countryData = null;
+    //static public int year = 2010;  // Standard set to 2013, but can be changed by the user.
+    //static public OLDCountryData countryData = null;
 
 
-    static public Country country = null;
-    static public CameraUpdate cameraUpdate = null;
+    //static public OLDCountry country = null;
+    //static public CameraUpdate cameraUpdate = null;
 
-    private int[] primaryColours = new int[6];
 
     // =============================================================================================
     // Constructor
@@ -41,10 +37,11 @@ public class CanYouFeedMeApp extends Application
         }
 
     // =============================================================================================
-    // Static ethods
+    // Static methods
     // =============================================================================================
     static public CanYouFeedMeApp from(Context context)
         {
+
         return (CanYouFeedMeApp) context.getApplicationContext();
         }
 

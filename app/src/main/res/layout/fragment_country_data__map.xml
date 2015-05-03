@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              tools:context=".StartupActivity"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="2"
+              android:padding="@dimen/margin__small">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <fragment
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/country_data__map__googlemap"
+            tools:layout="@layout/abc_screen_simple"
+            />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/country_overview__judgement"
+        android:src="@drawable/icon_no"
+        android:contentDescription="@string/global__empty_value"
+        android:layout_marginTop="@dimen/margin__small"
+        />
+
+</LinearLayout>

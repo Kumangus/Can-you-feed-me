@@ -1,5 +1,6 @@
 package net.roughdesign.canyoufeedme.activities;
 
+
 import android.content.Intent;
 import android.location.Address;
 import android.os.AsyncTask;
@@ -7,27 +8,27 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
 import net.roughdesign.canyoufeedme.models.country.Country;
+import net.roughdesign.canyoufeedme.viewhandlers.CountrySelectionSpinnerHandler;
 import net.roughdesign.roughlib.Geography;
-import net.roughdesign.canyoufeedme.helper.GoogleMapsHelper;
+
+
 
 /**
  * Created by Rough on 11/04/2015.
  * The Activity for the world map screen.
  */
-public class WorldMapActivity extends ActionBarActivity implements View.OnClickListener, OnMapReadyCallback
+public class WorldMapActivity extends ActionBarActivity implements OnMapReadyCallback,
+        CountrySelectionSpinnerHandler.OnCountrySelectedListener
     {
     // =============================================================================================
     // Variables
@@ -35,12 +36,13 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
     static private final String TAG = "WorldMapActivity";
 
     private SupportMapFragment worldMapFragment;
-    private TextView automaticLabelView;
+    // TODO cleanup private TextView automaticLabelView;
     private TextView manualSelectorHeadline;
-    private Spinner manualSpinnerView;
+    private CountrySelectionSpinnerHandler spinnerHandler;
     private Button toCountryDetailView;
 
     private GoogleMap googleMap;
+
 
     // =============================================================================================
     // Overrides
@@ -49,11 +51,12 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState)
         {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.world_map);
+        setContentView(R.layout.activity_world_map);
 
         assignGuiElements();
         worldMapFragment.getMapAsync(this);
         }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap)
@@ -65,16 +68,13 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
         new CountrySearchAsyncTask().execute();
         }
 
+
     @Override
-    public void onClick(View v)
+    public void onCountrySelected()
         {
-        if (v == toCountryDetailView)
-            {
-            Intent intent = new Intent(WorldMapActivity.this, CountryOverviewActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.world_map__zoom__in, R.anim.world_map__zoom__out);
-            }
+        googleMap.animateCamera(Country.current.getCameraUpdate());
         }
+
 
     // =============================================================================================
     // Methods
@@ -82,36 +82,26 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
     private void assignGuiElements()
         {
         worldMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.world_map_map);
-        automaticLabelView = (TextView) findViewById(R.id.world_map_automatic_label);
+        // TODO cleanup automaticLabelView = (TextView) findViewById(R.id.world_map_automatic_label);
         manualSelectorHeadline = (TextView) findViewById(R.id.world_map__manual_selector__headline);
-        setupManualSelectionSpinner();
+        spinnerHandler = new CountrySelectionSpinnerHandler(this, this);
+        setupToCountryDetailView();
+        }
+
+
+    private void setupToCountryDetailView()
+        {
         toCountryDetailView = (Button) findViewById(R.id.world_map_to_country_detail);
-        toCountryDetailView.setOnClickListener(this);
-        }
-
-    private void setupManualSelectionSpinner()
+        toCountryDetailView.setOnClickListener(new View.OnClickListener()
         {
-        manualSpinnerView = (Spinner) findViewById(R.id.world_map_manual_selector);
-        ArrayAdapter<Country> arrayAdapter = new ArrayAdapter<>(this,
-                R.layout.world_map__list_item, R.id.world_map_list_item_text, Country.objects.getAll());
-        manualSpinnerView.setAdapter(arrayAdapter);
-        manualSpinnerView.setOnItemSelectedListener(new ManualSelectionListener());
-        }
-
-
-    private void setCountry(Country country)
-        {
-        if (country != null)
+        @Override
+        public void onClick(View view)
             {
-            for (int i = 0; i < manualSpinnerView.getAdapter().getCount(); i++)
-                {
-                Country countryBuffer = (Country) manualSpinnerView.getItemAtPosition(i);
-                if (countryBuffer.code.equals(country.code))
-                    {
-                    manualSpinnerView.setSelection(i);
-                    }
-                }
+            Intent intent = new Intent(WorldMapActivity.this, CountryDataActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.world_map__zoom__in, R.anim.world_map__zoom__out);
             }
+        });
         }
 
 
@@ -127,47 +117,27 @@ public class WorldMapActivity extends ActionBarActivity implements View.OnClickL
             Address address = Geography.getAddress(WorldMapActivity.this);
             if (address == null)
                 return null;
-            return Country.objects.getForCountryCode(address.getCountryCode());
+            return Country.getForCountryCode(address.getCountryCode());
             }
 
 
         @Override
         protected void onPostExecute(Country result)
             {
-            CanYouFeedMeApp.country = result;
-            automaticLabelView.setText(R.string.world_map_cant_find_country);
+            Country.current = result;
+            // TODO cleanup automaticLabelView.setText(R.string.world_map__cant_find_country);
             if (result != null)
                 {
-                automaticLabelView.setText(R.string.world_map_found_country);
+                // TODO cleanup automaticLabelView.setText(R.string.world_map__found_country);
+                Toast toast = Toast.makeText(WorldMapActivity.this, R.string.world_map__found_country, Toast.LENGTH_LONG);
+                toast.getView().setBackgroundResource(R.color.cyfm_background_dark);
+                toast.show();
                 }
             manualSelectorHeadline.setVisibility(View.VISIBLE);
-            manualSpinnerView.setVisibility(View.VISIBLE);
             toCountryDetailView.setVisibility(View.VISIBLE);
-            setCountry(result);
+            spinnerHandler.setCountry(result);
             }
         }
 
-
-    // =============================================================================================
-    // Inner Class: ManualSelectionListener
-    // =============================================================================================
-    private class ManualSelectionListener implements AdapterView.OnItemSelectedListener
-        {
-
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
-            {
-            CanYouFeedMeApp.country = ((Country) parent.getItemAtPosition(pos));
-            // TODO CLEANUP CanYouFeedMeApp.country = (Country) parent.getItemAtPosition(pos);
-            CanYouFeedMeApp.cameraUpdate = GoogleMapsHelper.getCameraUpdate(WorldMapActivity.this, CanYouFeedMeApp.country.code);
-            if (CanYouFeedMeApp.cameraUpdate != null)
-                googleMap.animateCamera(CanYouFeedMeApp.cameraUpdate);
-            }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent)
-            {
-
-            }
-        }
 
     }

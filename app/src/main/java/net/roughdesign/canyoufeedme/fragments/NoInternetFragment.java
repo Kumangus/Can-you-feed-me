@@ -32,7 +32,7 @@ public class NoInternetFragment extends DialogFragment
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(R.string.dialog_no_internet_message);
-        builder.setNegativeButton(R.string.global_cancel, new DialogInterface.OnClickListener()
+        builder.setNegativeButton(R.string.global__cancel, new DialogInterface.OnClickListener()
         {
         public void onClick(DialogInterface dialog, int id)
             {

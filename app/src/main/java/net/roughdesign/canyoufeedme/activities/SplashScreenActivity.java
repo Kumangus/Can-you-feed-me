@@ -1,5 +1,6 @@
 package net.roughdesign.canyoufeedme.activities;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -37,7 +38,7 @@ public class SplashScreenActivity extends FragmentActivity implements NoInternet
     protected void onCreate(Bundle savedInstanceState)
         {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
+        setContentView(R.layout.activity_splash_screen);
 
         startTimer();
         onRetryToGetInternet();
@@ -108,7 +109,7 @@ public class SplashScreenActivity extends FragmentActivity implements NoInternet
             {
             try
                 {
-                Country.objects.populateFromCsvFile(SplashScreenActivity.this);
+                Country.populateList(SplashScreenActivity.this);
                 } catch (IOException e)
                 {
                 Log.e(TAG, "Issues reading CSV file");

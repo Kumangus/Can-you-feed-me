@@ -1,5 +1,6 @@
 package net.roughdesign.canyoufeedme.models.foodbalance;
 
+
 import net.roughdesign.roughlib.Web;
 
 import org.json.JSONArray;
@@ -9,6 +10,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 /**
  * Created by Rough on 29/04/2015.
@@ -239,6 +242,42 @@ public class FoodBalance
         }
 
 
+    static private boolean isEdible(int key)
+        {
+        return (key != KEY_ALCOHOL__NON_FOOD &&
+                key != KEY_BEER &&
+                key != KEY_BEVERAGES__ALCOHOLIC &&
+                key != KEY_BEVERAGES__FERMENTED &&
+                key != KEY_COCOA_BEANS &&
+                key != KEY_COFFEE &&
+                key != KEY_COTTONSEED &&
+                key != KEY_COTTONSEED_OIL &&
+                key != KEY_FISH__BODY_OIL &&
+                key != KEY_FISH__LIVER_OIL &&
+                key != KEY_GROUNDNUT_OIL &&
+                key != KEY_MISCELLANEOUS &&
+                key != KEY_OILCROPS_OIL__OTHER &&
+                key != KEY_OILCROPS__OTHER &&
+                key != KEY_PALMKERNEL_OIL &&
+                key != KEY_PALMKERNELS &&
+                key != KEY_PEPPER &&
+                key != KEY_PIMENTO &&
+                key != KEY_POPULATION &&
+                key != KEY_RAPE_AND_MUSTARD_OIL &&
+                key != KEY_RAPE_AND_MUSTARDSEED &&
+                key != KEY_RICEBRAN_OIL &&
+                key != KEY_SORGHUM &&
+                key != KEY_SPICES__OTHER &&
+                key != KEY_SUGAR___RAW_EQUIVALENT &&
+                key != KEY_SUGAR_BEET &&
+                key != KEY_SUGAR_CANE &&
+                key != KEY_SUGAR__NON_CENTRIFUGAL &&
+                key != KEY_SWEETENERS__OTHER &&
+                key != KEY_TEA &&
+                key != KEY_WINE
+        );
+        }
+
     // =============================================================================================
     // Overridden methods
     // =============================================================================================
@@ -253,44 +292,24 @@ public class FoodBalance
         for (Map.Entry<Integer, FoodBalanceValueSet> entry : entries.entrySet())
             {
             // TODO check through this list of "non-foods"
-            if (entry.getKey() != KEY_ALCOHOL__NON_FOOD &&
-                    entry.getKey() != KEY_BEER &&
-                    entry.getKey() != KEY_BEVERAGES__ALCOHOLIC &&
-                    entry.getKey() != KEY_BEVERAGES__FERMENTED &&
-                    entry.getKey() != KEY_COCOA_BEANS &&
-                    entry.getKey() != KEY_COFFEE &&
-                    entry.getKey() != KEY_COTTONSEED &&
-                    entry.getKey() != KEY_COTTONSEED_OIL &&
-                    entry.getKey() != KEY_FISH__BODY_OIL &&
-                    entry.getKey() != KEY_FISH__LIVER_OIL &&
-                    entry.getKey() != KEY_GROUNDNUT_OIL &&
-                    entry.getKey() != KEY_MISCELLANEOUS &&
-                    entry.getKey() != KEY_OILCROPS_OIL__OTHER &&
-                    entry.getKey() != KEY_OILCROPS__OTHER &&
-                    entry.getKey() != KEY_PALMKERNEL_OIL &&
-                    entry.getKey() != KEY_PALMKERNELS &&
-                    entry.getKey() != KEY_PEPPER &&
-                    entry.getKey() != KEY_PIMENTO &&
-                    entry.getKey() != KEY_POPULATION &&
-                    entry.getKey() != KEY_RAPE_AND_MUSTARD_OIL &&
-                    entry.getKey() != KEY_RAPE_AND_MUSTARDSEED &&
-                    entry.getKey() != KEY_RICEBRAN_OIL &&
-                    entry.getKey() != KEY_SORGHUM &&
-                    entry.getKey() != KEY_SPICES__OTHER &&
-                    entry.getKey() != KEY_SUGAR___RAW_EQUIVALENT &&
-                    entry.getKey() != KEY_SUGAR_BEET &&
-                    entry.getKey() != KEY_SUGAR_CANE &&
-                    entry.getKey() != KEY_SUGAR__NON_CENTRIFUGAL &&
-                    entry.getKey() != KEY_SWEETENERS__OTHER &&
-                    entry.getKey() != KEY_TEA &&
-                    entry.getKey() != KEY_WINE
-                    )
+            if (isEdible(entry.getKey()))
                 {
                 result = result.add(entry.getValue());
                 }
             }
         return result;
         }
+
+
+    /**
+     * @return The surplus or deficit in Kcal/capita/day.
+     */
+    public double getSurplusOrDeficitInKcalPerPersonPerDay()
+        {
+        return getEdibleFood().foodSupplyInKcalPerPersonPerDay - FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY;
+        }
+
+
 
 
     // =============================================================================================

@@ -1,40 +1,47 @@
-package net.roughdesign.roughlib.database;
+package net.roughdesign.canyoufeedme.models.OLDSTUFF;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.roughdesign.roughlib.database.Model;
 
 /**
  * Created by Rough on 13/04/2015.
  */
 @Deprecated
-public class Manager<T extends Model>
+public class OLDCountry extends Model
     {
+    // TODO maybe this can be combined with country data - it would be logical at least
     // =============================================================================================
     // Variables
     // =============================================================================================
-    protected List<T> models = new ArrayList<>();
+    static public CountryManager objects = new CountryManager();
 
     // =============================================================================================
-    // Methods
+    // Model fields
     // =============================================================================================
-    public List<T> getAll()
+    public String code;
+    public String name;
+
+    // =============================================================================================
+    // Constructors
+    // =============================================================================================
+    public OLDCountry(int id, String code, String name)
         {
-        return models;
+        super(id);
+        this.code = code;
+        this.name = name;
         }
 
-    public T get(int id)
+    // =============================================================================================
+    // Methods
+    // =============================================================================================
+    @Override
+    public String toString()
         {
-        return models.get(id);
+        return name;
         }
 
-    // =============================================================================================
-    // Methods
-    // =============================================================================================
+    public void writeToDatabase()
+        {
 
-    // =============================================================================================
-    // Methods
-    // =============================================================================================
-
-
+        }
 
     }

@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.models.countrydata;
+package net.roughdesign.canyoufeedme.models.OLDSTUFF;
 
 import net.roughdesign.canyoufeedme.models.foodbalance.FoodBalance;
 
@@ -10,7 +10,8 @@ import java.io.IOException;
  * Created by Rough on 12/04/2015.
  * A model to represent a country.
  */
-public class CountryData
+@Deprecated
+public class OLDCountryData
     {
     // =============================================================================================
     // Model fields
@@ -30,10 +31,10 @@ public class CountryData
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    private CountryData(String countryCode, int year, FoodBalance foodBalance
-                        // Population population, AnimalProduction animalProduction,
-                        // CropProduction cropProduction, AnimalSupply animalSupply,
-                        // CropSupply cropSupply, Trade trade
+    private OLDCountryData(String countryCode, int year, FoodBalance foodBalance
+                           // Population population, AnimalProduction animalProduction,
+                           // CropProduction cropProduction, AnimalSupply animalSupply,
+                           // CropSupply cropSupply, Trade trade
     )
         {
         this.countryCode = countryCode;
@@ -58,7 +59,7 @@ public class CountryData
      * @param year        The year for which to retrieve the data.
      * @return A Countrydata object, populated with data from the web.
      */
-    static public CountryData readFromWeb(String countryCode, int year) throws IOException, JSONException
+    static public OLDCountryData readFromWeb(String countryCode, int year) throws IOException, JSONException
         {
         FoodBalance foodBalance = FoodBalance.getFromWeb(countryCode,year);
         // Population population = Population.getFromWeb(countryCode,year);
@@ -68,7 +69,7 @@ public class CountryData
         // CropSupply cropSupply = CropSupply.getFromWeb(countryCode, year);
         // Trade trade = Trade.getFromWeb(countryCode, year);
         // return new CountryData(countryCode, year, population, animalProduction, cropProduction, animalSupply, cropSupply, trade);
-        return new CountryData(countryCode, year, foodBalance);
+        return new OLDCountryData(countryCode, year, foodBalance);
         }
 
 

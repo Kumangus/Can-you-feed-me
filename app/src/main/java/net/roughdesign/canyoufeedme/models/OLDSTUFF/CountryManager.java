@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.models.country;
+package net.roughdesign.canyoufeedme.models.OLDSTUFF;
 
 import android.content.Context;
 
@@ -13,7 +13,8 @@ import java.io.InputStreamReader;
 /**
  * Created by Rough on 13/04/2015.
  */
-public class CountryManager extends Manager<Country>
+@Deprecated
+public class CountryManager extends Manager<OLDCountry>
     {
     // =============================================================================================
     // Variables
@@ -42,7 +43,7 @@ public class CountryManager extends Manager<Country>
         while ((nextLine = csvReader.readNext()) != null)
             {
             counter++;
-            Country country = new Country(counter, nextLine[1], nextLine[0]);
+            OLDCountry country = new OLDCountry(counter, nextLine[1], nextLine[0]);
             models.add(country);
             }
         }
@@ -51,9 +52,9 @@ public class CountryManager extends Manager<Country>
     /**
      * @return The Country with the given country code, or null if none can be found
      */
-    public Country getForCountryCode(String countryCode)
+    public OLDCountry getForCountryCode(String countryCode)
         {
-        for (Country country : this.models)
+        for (OLDCountry country : this.models)
             {
             if (country.code.equals(countryCode))
                 {

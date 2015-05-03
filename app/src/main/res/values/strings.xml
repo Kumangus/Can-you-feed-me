@@ -1,34 +1,33 @@
 <resources>
 
     <!-- Placeholders ========================================================================== -->
-    <string name="ph.please_wait">Please wait&#8230;</string>
-    <string name="ph.string">placeholder</string>
+    <string name="ph__please_wait">Please wait&#8230;</string>
+    <string name="ph__string">placeholder</string>
 
     <!-- Global ================================================================================ -->
-    <string name="global.app_name">Can you feed me</string>
-    <string name="global.empty_value">-</string>
-    <string name="global.cancel">Cancel</string>
-    <string name="global.continue">Continue</string>
-    <string name="global.units.calories"> kcal</string>
-    <string name="global.units.calories_per_person"> kcal/person</string>
-    <string name="global.units.tons"> t</string>
+    <string name="global__app_name">Can you feed me?</string>
+    <string name="global__empty_value">-</string>
+    <string name="global__cancel">Cancel</string>
+    <string name="global__continue">Continue</string>
+    <string name="global__units__calories"> kcal</string>
+    <string name="global__units__calories_per_person"> kcal/person</string>
+    <string name="global__units__tons"> t</string>
 
 
     <!-- World Map screen ====================================================================== -->
-    <string name="world_map.title">Can you feed me?</string>
-    <string name="world_map.searching">Searching country&#8230;</string>
-    <string name="world_map.found_country">Found country automatically!</string>
-    <string name="world_map.cant_find_country">Can\'t find country</string>
-    <string name="world_map.to_select_manual">Select manually:</string>
+    <string name="world_map__searching">Searching country&#8230;</string>
+    <string name="world_map__found_country">Found country automatically!</string>
+    <string name="world_map__cant_find_country">Can\'t find country</string>
+    <string name="world_map__to_select_manual">Select manually:</string>
 
     <!-- Country overview screen =============================================================== -->
-    <string name="country_overview.title">Country overview</string>
-    <string name="country_overview.available_headline">Available (kcal/person/day)</string>
-    <string name="country_overview.needed_headline">Needed (kcal/person/day)</string>
-    <string name="country_overview.result_headline">Surplus/Deficit (kcal/person/day)</string>
-    <string name="country_overview.more">More&#8230;</string>
-    <string name="country_overview.result__yes">Yes! Your country can feed you!</string>
-    <string name="country_overview.result__no">Your country can not feed you.</string>
+    <string name="country_overview__title">Country overview</string>
+    <string name="country_overview__available_headline">Available (kcal/person/day)</string>
+    <string name="country_overview__needed_headline">Needed (kcal/person/day)</string>
+    <string name="country_overview__result_headline">Surplus/Deficit (kcal/person/day)</string>
+    <string name="country_overview__more">More&#8230;</string>
+    <string name="country_overview__result__yes">Yes! Your country can feed you!</string>
+    <string name="country_overview__result__no">Your country can not feed you.</string>
     <string name="country_overview__setting__change_year">Change year&#8230;</string>
     <string name="country_overview__setting__change_trade">Change trade options</string>
     <string name="country_overview__setting__change_crops">Change crops</string>
@@ -37,38 +36,40 @@
 
 
     <!-- Country detail screen ================================================================= -->
-    <string name="country_detail.title">Country details</string>
-    <string name="country_detail.amount">Amount</string>
-    <string name="country_detail.diversity">Diversity</string>
+    <string name="country_data__title">Country details</string>
+    <string name="country_data__amount">Amount</string>
+    <string name="country_data__diversity">Diversity</string>
 
     <!-- Country detail screen - amount fragment =============================================== -->
-    <string name="country_detail..amount.produced">Food produced</string>
-    <string name="country_detail..amount.imported">Food imported</string>
-    <string name="country_detail..amount.exported">Food exported</string>
-    <string name="country_detail..amount.needed">Food needed</string>
-    <string name="country_detail..amount.result">Result</string>
+    <string name="country_data__assessment__produced">Food produced</string>
+    <string name="country_data__assessment__imported">Food imported</string>
+    <string name="country_data__assessment__exported">Food exported</string>
+    <string name="country_data__assessment__needed">Food needed</string>
+    <string name="country_data__assessment__result">Result</string>
+    <string name="country_data__assessment__all_in_kcal_person_day">All values in kcal/person/day</string>
+
 
     <!-- Country detail screen - food diversity fragment ============================================ -->
-    <string name="country_detail..diversity.fish">Fish</string>
-    <string name="country_detail..diversity.meat">Meat</string>
-    <string name="country_detail..diversity.animal_byproducts">Animal byproducts</string>
-    <string name="country_detail..diversity.cereals">Cereals</string>
-    <string name="country_detail..diversity.produce">Produce</string>
-    <string name="country_detail..diversity.non_essentials">Non-essentials</string>
+    <string name="country_data__diversity__fish">Fish</string>
+    <string name="country_data__diversity__meat">Meat</string>
+    <string name="country_data__diversity__animal_byproducts">Animal byproducts</string>
+    <string name="country_data__diversity__cereals">Cereals</string>
+    <string name="country_data__diversity__produce">Produce</string>
+    <string name="country_data__diversity__non_essentials">Non-essentials</string>
 
     <!-- Country detail screen - food diversity details dialog ============================================ -->
-    <string name="country_detail..diversity..detail.fish">Fish</string>
-    <string name="country_detail..diversity..detail.meat">Meat</string>
-    <string name="country_detail..diversity..detail.animal_byproducts">Animal byproducts</string>
-    <string name="country_detail..diversity..detail.cereals">Cereals</string>
-    <string name="country_detail..diversity..detail.produce">Produce</string>
-    <string name="country_detail..diversity..detail.non_essentials">Non-essentials</string>
+    <string name="country_data__diversity__detail__fish">Fish</string>
+    <string name="country_data__diversity__detail__meat">Meat</string>
+    <string name="country_data__diversity__detail__animal_byproducts">Animal byproducts</string>
+    <string name="country_data__diversity__detail__cereals">Cereals</string>
+    <string name="country_data__diversity__detail__produce">Produce</string>
+    <string name="country_data__diversity__detail__non_essentials">Non-essentials</string>
 
-    <string name="country_detail..diversity..detail.produced">%1$d produced</string>
-    <string name="country_detail..diversity..detail.imported">%1$d imported</string>
-    <string name="country_detail..diversity..detail.exported">%1$d exported</string>
-    <string name="country_detail..diversity..detail.available_in_t">%1$d available</string>
-    <string name="country_detail..diversity..detail.available_per_person_per_day">
+    <string name="country_data__diversity__detail__produced">%1$d produced</string>
+    <string name="country_data__diversity__detail__imported">%1$d imported</string>
+    <string name="country_data__diversity__detail__exported">%1$d exported</string>
+    <string name="country_data__diversity__detail__available_in_t">%1$d available</string>
+    <string name="country_data__diversity__detail__available_per_person_per_day">
         %1$d available
     </string>
 

@@ -1,0 +1,188 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:context="net.roughdesign.canyoufeedme.activities.CountryDetailActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/country_data__diversity__chart_height"
+        android:name="net.roughdesign.canyoufeedme.fragments.countrydata.DiversityChartFragment"
+        android:id="@+id/fragment"
+        tools:layout="@layout/layout_frame"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:baselineAligned="false"
+        android:layout_margin="@dimen/margin__small"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__meat"
+                android:id="@+id/country_data__diversity__meat__h"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/country_data__diversity__v__meat"
+                android:text="@string/global__empty_value"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_indigo_light"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__fish"
+                android:id="@+id/country_data__diversity__fish__h"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/country_data__diversity__v__fish"
+                android:text="@string/global__empty_value"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_indigo_light"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:baselineAligned="false"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__animal_byproducts"
+                android:id="@+id/country_data__diversity__animal_byproducts__h"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/global__empty_value"
+                android:id="@+id/country_data__diversity__v__animal_byproducts"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_yellow_light"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__cereals"
+                android:id="@+id/country_data__diversity__cereals_h"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/global__empty_value"
+                android:id="@+id/country_data__diversity__v__cereals"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_green_light"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_margin="@dimen/margin__small"
+        android:baselineAligned="false"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__produce"
+                android:id="@+id/country_data__diversity__h__produce"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/global__empty_value"
+                android:id="@+id/country_data__diversity__v__produce"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_red_light"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/country_data__diversity__non_essentials"
+                android:id="@+id/country_data__diversity__non_essentials__h"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/global__empty_value"
+                android:id="@+id/country_data__diversity__v__non_essentials"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/cyfm_red_light"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

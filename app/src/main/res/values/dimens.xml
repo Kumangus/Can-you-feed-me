@@ -1,21 +1,22 @@
 <resources>
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="margin.small">16dp</dimen>
-    <dimen name="margin.big">32dp</dimen>
-    <dimen name="margin.huge">128dp</dimen>
 
-    <dimen name="margin.vertical.small">16dp</dimen>
-    <dimen name="margin.vertical.big">32dp</dimen>
-    <dimen name="margin.vertical.huge">128dp</dimen>
-    <dimen name="margin.horizontal.small">16dp</dimen>
-    <dimen name="margin.horizontal.big">32dp</dimen>
 
-    <dimen name="world_map.map.height">220dp</dimen>
-    <dimen name="world_map.automatic.height">90dp</dimen>
+    <!-- Universal dimensions -->
+    <dimen name="margin__small">16dp</dimen>
+    <dimen name="margin__big">32dp</dimen>
+    <dimen name="margin__huge">128dp</dimen>
 
-    <dimen name="country_detail__map_height">320dp</dimen>
+
+    <!-- Special dimensions -->
+    <dimen name="world_map__map_height">220dp</dimen>
+    <dimen name="world_map__automatic_height">90dp</dimen>
+    <dimen name="country_data__map_height">320dp</dimen>
+    <dimen name="country_data__assessment__chart_height">256dp</dimen>
+    <dimen name="country_data__diversity__chart_height">256dp</dimen>
 
 </resources>

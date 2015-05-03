@@ -3,6 +3,7 @@ package net.roughdesign.roughlib.database;
 /**
  * Created by Rough on 13/04/2015.
  */
+@Deprecated
 public class Model
     {
     // =============================================================================================

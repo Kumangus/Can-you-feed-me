@@ -1,5 +1,6 @@
 package net.roughdesign.canyoufeedme.dialogs;
 
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -11,6 +12,9 @@ import android.util.Log;
 
 import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
+import net.roughdesign.canyoufeedme.models.country.Country;
+
+
 
 /**
  * Created by Rough on 11/04/2015.
@@ -39,11 +43,11 @@ public class CountryOverviewYearDialog extends DialogFragment
         {
         public void onClick(DialogInterface dialog, int which)
             {
-            CanYouFeedMeApp.year = Integer.parseInt(YEARS[which]);
+            Country.current.year = Integer.parseInt(YEARS[which]);
             Intent intent = getActivity().getIntent();
             getActivity().finish();
             startActivity(intent);
-            Log.i(TAG, "Year selected: " + CanYouFeedMeApp.year);
+            Log.i(TAG, "Year selected: " + Country.current.year);
             }
         });
         return builder.create();

@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="net.roughdesign.canyoufeedme.activities.CountryDataActivity"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/country_data__title"
+        android:layout_margin="@dimen/margin__small">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/ph__string"
+            android:id="@+id/country_data__title__year"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/ph__string"
+            android:id="@+id/country_data__title__country"
+            android:layout_toStartOf="@id/country_data__title__year"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentEnd="false"/>
+    </RelativeLayout>
+
+    <ViewAnimator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/country_data__loading_animator">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/data__icons"
+                android:paddingBottom="@dimen/margin__small">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/country_data__icons__map"
+                    android:src="@drawable/ic_map_48px"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/country_data__icons__graph"
+                    android:src="@drawable/ic_assessment_48px"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/country_data__icons__pie_chart"
+                    android:src="@drawable/ic_timelapse_48px"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/country_data__viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/data__icons">
+
+            </android.support.v4.view.ViewPager>
+
+        </RelativeLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar3"/>
+    </ViewAnimator>
+</LinearLayout>

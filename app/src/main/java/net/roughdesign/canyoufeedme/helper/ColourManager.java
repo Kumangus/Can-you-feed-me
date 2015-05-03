@@ -7,6 +7,7 @@ import net.roughdesign.canyoufeedme.R;
 /**
  * Created by Rough on 16/04/2015.
  */
+@Deprecated
 public class ColourManager
     {
     // =============================================================================================

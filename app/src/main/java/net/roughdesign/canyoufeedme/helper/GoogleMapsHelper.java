@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
  * Created by Rough on 13/04/2015.
  * Some static methods to help with GoogleMaps.
  */
+@Deprecated
 public class GoogleMapsHelper
     {
     // =============================================================================================
@@ -38,7 +39,7 @@ public class GoogleMapsHelper
         LatLngBounds countryBox = GoogleMapsHelper.getBoundsForCountryCode(context, countryCode);
         if (countryBox == null)
             {
-            return null;
+            return CameraUpdateFactory.newLatLngZoom(new LatLng(0, 0), 6);
             }
         return CameraUpdateFactory.newLatLngBounds(countryBox, 20);
         }
@@ -60,6 +61,7 @@ public class GoogleMapsHelper
      */
     static public CameraUpdate getBestCameraUpdate(Context context, Address address)
         {
+        // TODO best camera update
         CameraUpdate result;
         result = getCameraUpdate(context, address.getCountryCode());
         if (result != null)

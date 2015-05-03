@@ -14,8 +14,7 @@ public class StartupActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
         {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.startup);
-        //ChartFactory lol = new ChartFactory();
+        setContentView(R.layout.activity_splash_screen);
 
         Intent intent = new Intent(this, SplashScreenActivity.class);
         startActivity(intent);

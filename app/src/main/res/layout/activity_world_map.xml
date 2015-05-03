@@ -21,26 +21,28 @@
             <fragment
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/world_map.map.height"
-                android:id="@+id/world_map.map"/>
+                android:layout_height="@dimen/world_map__map_height"
+                android:id="@+id/world_map.map"
+                tools:layout="@layout/layout_frame"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/world_map.automatic.label"
-                android:text="@string/world_map.searching"
+                android:text="@string/world_map__searching"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/margin.vertical.small"
-                android:layout_marginTop="@dimen/margin.vertical.big"/>
+                android:layout_marginBottom="@dimen/margin__small"
+                android:layout_marginTop="@dimen/margin__big"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/world_map.to_select_manual"
+                android:text="@string/world_map__to_select_manual"
                 android:id="@+id/world_map__manual_selector__headline"
-                android:layout_marginLeft="@dimen/margin.horizontal.big"
+                android:layout_marginLeft="@dimen/margin__big"
                 />
 
             <Spinner
@@ -49,15 +51,15 @@
                 android:id="@+id/world_map.manual.selector"
                 android:layout_gravity="center_horizontal"
                 android:visibility="invisible"
-                android:layout_margin="@dimen/margin.horizontal.small"/>
+                android:layout_margin="@dimen/margin__small"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/global.continue"
+                android:text="@string/global__continue"
                 android:id="@+id/world_map.to_country_detail"
                 android:layout_gravity="right"
-                android:paddingEnd="@dimen/margin.vertical.small"
+                android:paddingEnd="@dimen/margin__small"
                 android:visibility="invisible"/>
         </LinearLayout>
     </ScrollView>
