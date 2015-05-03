@@ -45,12 +45,11 @@ public class MapFragment extends AbsCountryDataFragment implements OnMapReadyCal
         if (view == null)
             {
             view = inflater.inflate(R.layout.fragment_country_data__map, container, false);
-
-            judgement = (ImageView) view.findViewById(R.id.country_overview__judgement);
             SupportMapFragment worldMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.country_data__map__googlemap);
             worldMapFragment.getMapAsync(this);
             }
 
+        judgement = (ImageView) view.findViewById(R.id.country_overview__judgement);
         return view;
         }
 
@@ -69,6 +68,10 @@ public class MapFragment extends AbsCountryDataFragment implements OnMapReadyCal
         if (result.foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay() > 0)
             {
             judgement.setImageResource(R.drawable.icon_yes);
+            }
+        else
+            {
+            judgement.setImageResource(R.drawable.icon_no);
             }
         }
 

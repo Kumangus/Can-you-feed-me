@@ -110,10 +110,10 @@ public class AssessmentChartFragment extends Fragment
         addValue(1, foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay);
         addValue(2, FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY);
         addValue(3, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
-        addValue(4, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
+        //addValue(4, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
         Log.e(TAG, "foodSupplyInKcalPerPersonPerDay" + foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay
-        + "ADVISED_KCAL_PER_PERSON_PER_DAY" + FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY
-        + "getSurplusOrDeficitInKcalPerPersonPerDay" + foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
+                + "ADVISED_KCAL_PER_PERSON_PER_DAY" + FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY
+                + "getSurplusOrDeficitInKcalPerPersonPerDay" + foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
         //addData(3, R.string.country_detail__amount_exported, -countryData.getTotalExportInTons());
         //addData(4, R.string.country_detail__amount_needed, -countryData.getTotalFoodConsumedInTons());
         //addData(5, R.string.country_detail__amount_result, countryData.getEndResultValue());
@@ -151,7 +151,7 @@ public class AssessmentChartFragment extends Fragment
         xyRenderer.setApplyBackgroundColor(true);
 
 
-        xyRenderer.setXAxisMax(xyRenderer.getSeriesRenderers().length);
+        xyRenderer.setXAxisMax(xyRenderer.getSeriesRenderers().length + 1);
         xyRenderer.setXAxisMin(-1);
         xyRenderer.setBarWidth(100f);
         xyRenderer.setBarSpacing(400);
