@@ -9,7 +9,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="@dimen/country_data__diversity__chart_height"
-        android:name="net.roughdesign.canyoufeedme.fragments.countrydata.DiversityChartFragment"
+        android:name="net.roughdesign.canyoufeedme.fragments.DiversityChartFragment"
         android:id="@+id/fragment"
         tools:layout="@layout/layout_frame"/>
 

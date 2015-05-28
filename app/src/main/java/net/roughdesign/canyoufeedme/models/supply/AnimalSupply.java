@@ -27,56 +27,56 @@ public class AnimalSupply extends Web
     // ================================================
     // Keys: Meat
     // ================================================
-    static public final int KEY_MEAT = 2943;  // Meat total
+    static private final int KEY_MEAT = 2943;  // Meat total
     @SuppressWarnings("unused")
-    static public final int KEY_BOVINE_MEAT = 2731;
+    static private final int KEY_BOVINE_MEAT = 2731;
     @SuppressWarnings("unused")
-    static public final int KEY_MEAT_MEAL = 2749;
+    static private final int KEY_MEAT_MEAL = 2749;
     @SuppressWarnings("unused")
-    static public final int KEY_MEAT_AQUATIC_MAMMALS = 2768;
+    static private final int KEY_MEAT_AQUATIC_MAMMALS = 2768;
     @SuppressWarnings("unused")
-    static public final int KEY_MEAT_OTHER = 2735;
+    static private final int KEY_MEAT_OTHER = 2735;
     @SuppressWarnings("unused")
-    static public final int KEY_PIGMEAT = 2733;
+    static private final int KEY_PIGMEAT = 2733;
     @SuppressWarnings("unused")
-    static public final int KEY_POULTRY_MEAT = 2734;
+    static private final int KEY_POULTRY_MEAT = 2734;
     @SuppressWarnings("unused")
-    static public final int KEY_MUTTON_AND_GOAT_MEAT = 2732;
+    static private final int KEY_MUTTON_AND_GOAT_MEAT = 2732;
     @SuppressWarnings("unused")
-    static public final int KEY_OFFALS_EDIBLE = 2736;  // needs to be double checked
+    static private final int KEY_OFFALS_EDIBLE = 2736;  // needs to be double checked
     @SuppressWarnings("unused")
-    static public final int KEY_OFFALS = 2945;
+    static private final int KEY_OFFALS = 2945;
 
     // ================================================
     // Keys: Fish
     // ================================================
-    static public final int KEY_FISH_SEAFOOD = 2960;  // Fish total
+    static private final int KEY_FISH_SEAFOOD = 2960;  // Fish total
     @SuppressWarnings("unused")
-    static public final int KEY_AQUATIC_ANIMALS_OTHERS = 2769;
+    static private final int KEY_AQUATIC_ANIMALS_OTHERS = 2769;
     @SuppressWarnings("unused")
-    static public final int KEY_AQUATIC_PLANTS = 2775;
+    static private final int KEY_AQUATIC_PLANTS = 2775;
     @SuppressWarnings("unused")
-    static public final int KEY_AQUATIC_PRODUCTS_OTHER = 2961;
+    static private final int KEY_AQUATIC_PRODUCTS_OTHER = 2961;
     @SuppressWarnings("unused")
-    static public final int KEY_CEPHALOPODS = 2766;
+    static private final int KEY_CEPHALOPODS = 2766;
     @SuppressWarnings("unused")
-    static public final int KEY_CRUSTACEANS = 2765;
+    static private final int KEY_CRUSTACEANS = 2765;
     @SuppressWarnings("unused")
-    static public final int KEY_DEMERSAL_FISH = 2762;
+    static private final int KEY_DEMERSAL_FISH = 2762;
     @SuppressWarnings("unused")
-    static public final int KEY_FISH_BODY_OIL = 2781;
+    static private final int KEY_FISH_BODY_OIL = 2781;
     @SuppressWarnings("unused")
-    static public final int KEY_FISH_LIVER_OIL = 2782;
+    static private final int KEY_FISH_LIVER_OIL = 2782;
     @SuppressWarnings("unused")
-    static public final int KEY_FRESHWATER_FISH = 2761;
+    static private final int KEY_FRESHWATER_FISH = 2761;
     @SuppressWarnings("unused")
-    static public final int KEY_MARINE_FISH_OTHER = 2764;
+    static private final int KEY_MARINE_FISH_OTHER = 2764;
     @SuppressWarnings("unused")
-    static public final int KEY_MOLLUSCS_OTHER = 2767;
+    static private final int KEY_MOLLUSCS_OTHER = 2767;
     @SuppressWarnings("unused")
-    static public final int KEY_PELAGIC_FISH = 2763;
+    static private final int KEY_PELAGIC_FISH = 2763;
     @SuppressWarnings("unused")
-    static public final int KEY_FISH_MEAL = 2855;
+    static private final int KEY_FISH_MEAL = 2855;
 
 
     // ================================================
@@ -92,34 +92,35 @@ public class AnimalSupply extends Web
     // Whey 2.637.800
     // ================================================
     @SuppressWarnings("unused")
-    static public final int KEY_MILK_EXCLUDING_BUTTER_1 = 2848;  // approximate
-    static public final int KEY_MILK_EXCLUDING_BUTTER_2 = 2948;  // exact
-    static public final int KEY_MILK_WHOLE = 2738;
-    static public final int KEY_BUTTER_GHEE = 2740;
-    static public final int KEY_CHEESE = 2741;
-    static public final int KEY_CREAM = 2743;
-    static public final int KEY_WHEY = 2742;
+    static private final int KEY_MILK_EXCLUDING_BUTTER_1 = 2848;  // approximate
+    @SuppressWarnings("unused")
+    static private final int KEY_MILK_EXCLUDING_BUTTER_2 = 2948;  // exact
+    static private final int KEY_MILK_WHOLE = 2738;
+    static private final int KEY_BUTTER_GHEE = 2740;
+    static private final int KEY_CHEESE = 2741;
+    static private final int KEY_CREAM = 2743;
+    static private final int KEY_WHEY = 2742;
 
 
     // ================================================
     // Keys: Edible byproducts
     // ================================================
-    static public final int KEY_ANIMAL_FATS = 2946;
-    static public final int KEY_ANIMAL_PRODUCTS = 2941;
-    static public final int KEY_EGGS_1 = 2744;  // exact
+    static private final int KEY_ANIMAL_FATS = 2946;
+    static private final int KEY_ANIMAL_PRODUCTS = 2941;
+    static private final int KEY_EGGS_1 = 2744;  // exact
     @SuppressWarnings("unused")
-    static public final int KEY_EGGS_2 = 2949;  // approximate
+    static private final int KEY_EGGS_2 = 2949;  // approximate
     @SuppressWarnings("unused")
-    static public final int KEY_FATS_ANIMALS_RAW = 2737;
-    static public final int KEY_HONEY = 2745;
+    static private final int KEY_FATS_ANIMALS_RAW = 2737;
+    static private final int KEY_HONEY = 2745;
 
     // ================================================
     // Keys: the remaining keys
     // ================================================
     @SuppressWarnings("unused")
-    static public final int KEY_HIDES_AND_SKINS = 2748;
+    static private final int KEY_HIDES_AND_SKINS = 2748;
     @SuppressWarnings("unused")
-    static public final int KEY_GRAND_TOTAL = 2901;
+    static private final int KEY_GRAND_TOTAL = 2901;
 
 
     // =============================================================================================
@@ -192,7 +193,7 @@ public class AnimalSupply extends Web
     /**
      * @return Total supply of meat.
      */
-    public FoodSupplyValueSet getMeatSupply()
+    private FoodSupplyValueSet getMeatSupply()
         {
         return entries.get(KEY_MEAT);
         }
@@ -201,7 +202,7 @@ public class AnimalSupply extends Web
     /**
      * @return Total supply of seafood.
      */
-    public FoodSupplyValueSet getSeafoodSupply()
+    private FoodSupplyValueSet getSeafoodSupply()
         {
         return entries.get(KEY_FISH_SEAFOOD);
         }
@@ -210,7 +211,7 @@ public class AnimalSupply extends Web
     /**
      * @return Total supply of milk products.
      */
-    public FoodSupplyValueSet getMilkProductsSupply()
+    private FoodSupplyValueSet getMilkProductsSupply()
         {
 
 
@@ -241,7 +242,7 @@ public class AnimalSupply extends Web
     /**
      * @return Total supply of edible animal byproducts.
      */
-    public FoodSupplyValueSet getEdibleByProducts()
+    private FoodSupplyValueSet getEdibleByProducts()
         {
         return FoodSupplyValueSet.combine(
                 entries.get(KEY_ANIMAL_FATS),

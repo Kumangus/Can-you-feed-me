@@ -3,8 +3,9 @@ package net.roughdesign.canyoufeedme;
 
 /**
  * Created by Rough on 01/05/2015.
+ * Just for the divider comments.
  */
-public class unnnnn
+class unnnnn
     {
 
     // =============================================================================================

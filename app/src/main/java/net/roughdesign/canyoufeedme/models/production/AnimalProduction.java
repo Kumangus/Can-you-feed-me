@@ -4,6 +4,7 @@
 package net.roughdesign.canyoufeedme.models.production;
 
 import android.util.Log;
+import android.util.SparseArray;
 
 import net.roughdesign.roughlib.Web;
 
@@ -12,12 +13,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Rough
  */
+@SuppressWarnings("unused")
 public class AnimalProduction extends Web
     {
     // ================================================
@@ -25,7 +25,7 @@ public class AnimalProduction extends Web
     // http://data.fao.org/developers/api/v1/en/resources/faostat/fd-sup-live-fish/item/members.xml?page=1&pageSize=100&fields=mnemonic%2Clabel%40en%2Cproperties.*&sort=label%40en
     // ================================================
     static public final int KEY_BEEF_AND_BUFFALO_MEAT = 1806;
-    static public final int KEY_BEEFANDBUFFALO_MEAT_INDIG = 1747;
+    static public final int KEY_BEEF_AND_BUFFALO_MEAT_INDIG = 1747;
     static public final int KEY_BEESWAX = 1183;
     static public final int KEY_EGGS_PRIMARY = 1783;
     static public final int KEY_EGGS__HEN__IN_SHELL = 1062;
@@ -80,7 +80,7 @@ public class AnimalProduction extends Web
     static public final int KEY_MILK__WHOLE_FRESH_GOAT = 1020;
     static public final int KEY_MILK__WHOLE_FRESH_SHEEP = 982;
     static public final int KEY_MILK_TOTAL = 1780;
-    static public final int KEY_MUTTONANDGOAT_MEAT_INDIG = 1748;
+    static public final int KEY_MUTTON_AND_GOAT_MEAT_INDIG = 1748;
     static public final int KEY_OFFALS__NES = 1167;
     static public final int KEY_PIGEONS__OTHER_BIRDS = 1083;
     static public final int KEY_POULTRY_INDIGENOUS_TOTAL = 1775;
@@ -101,7 +101,7 @@ public class AnimalProduction extends Web
     private static final String LINK_FILTER = "&filter=cnt.iso2 eq %s and year eq %d";
     private static final String LINK_FIELDS = "&fields=item, item.bk as item_code, m5313, m5318, m5314, m5319, m5321, m5320, m5323, m5513, m5322, m5510, m5410, m5413, m5420, m5422, m5424, m5417";
 
-    private final HashMap<Integer, FoodProductionValueSet> entries = new HashMap<Integer, FoodProductionValueSet>();
+    private final SparseArray<FoodProductionValueSet> entries = new SparseArray<>();
 
 
     // ================================================
@@ -166,10 +166,10 @@ public class AnimalProduction extends Web
     public double getTotalProductionInT()
         {
         double result = 0;
-        for (final FoodProductionValueSet valueSet : entries.values())
+        int size = entries.size();
+        for (int i=0; i< size; i++)
             {
-            result += valueSet.productionInTons;
-
+            result += entries.valueAt(i).productionInTons;
             }
         return result;
         }
@@ -179,15 +179,15 @@ public class AnimalProduction extends Web
     public String toString()
         {
         final StringBuilder stringBuilder = new StringBuilder();
-        for (final Map.Entry<Integer, FoodProductionValueSet> entry : entries
-                .entrySet())
+        int size = entries.size();
+        for (int i=0; i< size; i++)
             {
-            stringBuilder.append(entry.getValue().displayName);
+            FoodProductionValueSet entry = entries.valueAt(i);
+            stringBuilder.append(entry.displayName);
             stringBuilder.append("\n");
-            stringBuilder.append(entry.getValue().productionInTons);
+            stringBuilder.append(entry.productionInTons);
             stringBuilder.append(" | ");
-
-            stringBuilder.append(entry.getValue().prodPopulationInNo);
+            stringBuilder.append(entry.prodPopulationInNo);
             stringBuilder.append("\n");
             }
         return stringBuilder.toString();

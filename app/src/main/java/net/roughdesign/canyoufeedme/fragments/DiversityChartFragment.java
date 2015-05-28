@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.os.Bundle;
@@ -39,8 +39,8 @@ public class DiversityChartFragment extends Fragment
     private FrameLayout chartFrame;
     private GraphicalView chartView;
 
-    private DefaultRenderer defaultRenderer = new DefaultRenderer();
-    private CategorySeries categorySeries = new CategorySeries("LOL");
+    private final DefaultRenderer defaultRenderer = new DefaultRenderer();
+    private final CategorySeries categorySeries = new CategorySeries("LOL");
 
     // =============================================================================================
     // Constructor
@@ -96,8 +96,9 @@ public class DiversityChartFragment extends Fragment
     private void setupChartData(CountryData countryData)
         {
         // TODO reimplement
-        addDataItem(R.string.country_data__diversity__fish, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
-        addDataItem(R.string.country_data__diversity__meat, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
+        addDataItem(R.string.country_data__diversity__fish, 0);
+        //addDataItem(R.string.country_data__diversity__fish, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
+        //addDataItem(R.string.country_data__diversity__meat, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
         //addDataItem(R.string.country_detail__diversity_animal_byproducts, countryData.animalByProduce.getAvailablePerPersonPerDay());
         //addDataItem(R.string.country_detail__diversity_cereals, countryData.cereals.getAvailablePerPersonPerDay());
         //addDataItem(R.string.country_detail__diversity_produce, countryData.produce.getAvailablePerPersonPerDay());

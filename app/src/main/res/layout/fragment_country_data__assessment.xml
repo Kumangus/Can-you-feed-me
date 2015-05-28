@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                tools:context="net.roughdesign.canyoufeedme.fragments.countrydata.AssessmentFragment"
+                tools:context="net.roughdesign.canyoufeedme.fragments.AssessmentFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -19,7 +19,7 @@
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/country_data__assessment__chart_height"
-                android:name="net.roughdesign.canyoufeedme.fragments.countrydata.AssessmentChartFragment"
+                android:name="net.roughdesign.canyoufeedme.fragments.AssessmentChartFragment"
                 android:id="@+id/country_data__assessment__graphic"
                 tools:layout="@layout/abc_screen_simple"/>
 

@@ -28,9 +28,8 @@ public class CountrySelectionSpinnerHandler
     // =============================================================================================
     // Member variables
     // =============================================================================================
-    private OnCountrySelectedListener listener;
-    private Activity activity;
-    private Spinner manualSpinnerView;
+    private final OnCountrySelectedListener listener;
+    private final Spinner manualSpinnerView;
 
 
     // =============================================================================================
@@ -39,12 +38,12 @@ public class CountrySelectionSpinnerHandler
     public CountrySelectionSpinnerHandler(OnCountrySelectedListener listener, Activity activity)
         {
         this.listener = listener;
-        this.activity = activity;
         manualSpinnerView = (Spinner) activity.findViewById(R.id.world_map_manual_selector);
         ArrayAdapter<Country> arrayAdapter = new ArrayAdapter<>(activity,
                 R.layout.world_map__list_item, R.id.world_map_list_item_text, Country.getAll());
         manualSpinnerView.setAdapter(arrayAdapter);
         manualSpinnerView.setOnItemSelectedListener(new ManualSelectionListener());
+        manualSpinnerView.setSelection(0);
         }
     // =============================================================================================
     // Class methods
@@ -79,7 +78,7 @@ public class CountrySelectionSpinnerHandler
     // =============================================================================================
     public interface OnCountrySelectedListener
         {
-        public void onCountrySelected();
+        void onCountrySelected();
         }
 
 

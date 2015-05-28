@@ -1,9 +1,10 @@
-package net.roughdesign.canyoufeedme.fragments;
+package net.roughdesign.canyoufeedme.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 
@@ -15,13 +16,14 @@ public class NoInternetFragment extends DialogFragment
     // =============================================================================================
     // Variables
     // =============================================================================================
-    static public String TAG = "NoInternetFragment";
+    static public final String TAG = "NoInternetFragment";
 
     private Listener listener;
 
     // =============================================================================================
     // Overrides
     // =============================================================================================
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
         {
@@ -63,9 +65,9 @@ public class NoInternetFragment extends DialogFragment
     // =============================================================================================
     public interface Listener
         {
-        public void onCancelTryingToGetInternet();
+        void onCancelTryingToGetInternet();
 
-        public void onRetryToGetInternet();
+        void onRetryToGetInternet();
         }
 
     }

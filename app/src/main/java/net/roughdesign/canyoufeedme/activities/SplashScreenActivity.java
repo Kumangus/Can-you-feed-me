@@ -12,13 +12,15 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import net.roughdesign.canyoufeedme.R;
-import net.roughdesign.canyoufeedme.fragments.NoInternetFragment;
+import net.roughdesign.canyoufeedme.dialogs.NoInternetFragment;
 import net.roughdesign.canyoufeedme.models.country.Country;
 
 import java.io.IOException;
 
 /**
  * Created by Rough on 11/04/2015.
+ * The Activity for the first visible screen, which reads the CSV files for countries before it
+ * goes on to the next screen.
  */
 public class SplashScreenActivity extends FragmentActivity implements NoInternetFragment.Listener
     {

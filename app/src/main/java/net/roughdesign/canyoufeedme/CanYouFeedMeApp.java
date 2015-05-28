@@ -6,6 +6,7 @@ import android.content.Context;
 
 /**
  * Created by Rough on 11/04/2015.
+ * The Application subclass to store global keys etc.
  */
 public class CanYouFeedMeApp extends Application
     {
@@ -13,28 +14,14 @@ public class CanYouFeedMeApp extends Application
     // =============================================================================================
     // Constants
     // =============================================================================================
-    static public final String INTENT_CODE__SELECTED_COUNTRY = "ic.selected_country";
 
     // =============================================================================================
     // Variables
     // =============================================================================================
-    //public Country currentCountry;
-
-    //static public int year = 2010;  // Standard set to 2013, but can be changed by the user.
-    //static public OLDCountryData countryData = null;
-
-
-    //static public OLDCountry country = null;
-    //static public CameraUpdate cameraUpdate = null;
-
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    public CanYouFeedMeApp()
-        {
-
-        }
 
     // =============================================================================================
     // Static methods

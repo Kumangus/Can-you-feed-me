@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.os.Bundle;

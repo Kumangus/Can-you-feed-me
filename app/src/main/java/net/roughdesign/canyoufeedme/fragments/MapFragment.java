@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 
 import net.roughdesign.canyoufeedme.R;
+import net.roughdesign.canyoufeedme.fragments.AbsCountryDataFragment;
 import net.roughdesign.canyoufeedme.models.country.Country;
 import net.roughdesign.canyoufeedme.models.country.CountryData;
 

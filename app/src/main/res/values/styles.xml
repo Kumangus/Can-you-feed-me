@@ -5,22 +5,22 @@
         <!-- Customize your theme here. -->
         <item name="android:background">@color/cyfm_background_dark</item>
         <item name="android:textColor">@color/cyfm_white</item>
-        <item name="android:buttonStyle">@style/BorderlessButton</item>
+        <item name="android:buttonStyle">@style/CyfmBorderlessButton</item>
+        <item name="android:radioButtonStyle">@style/CyfmRadioButton</item>
+
 
     </style>
 
 
 
-    <style name="CYFMButton" parent="android:Widget.Button">
-        <item name="android:background">@color/cyfm_background_light</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:layout_margin">16dp</item>
-
+    <style name="CyfmBorderlessButton" parent="android:Widget.Button">
     </style>
 
-    <style name="BorderlessButton" parent="android:Widget.Button">
-        <item name="android:textColor">@color/cyfm_blue_light</item>
+    <style name="CyfmRadioButton" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/cyfm_white</item>
     </style>
+
+
 
 
 </resources>

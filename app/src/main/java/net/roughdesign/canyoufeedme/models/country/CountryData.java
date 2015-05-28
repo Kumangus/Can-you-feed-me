@@ -1,13 +1,17 @@
 package net.roughdesign.canyoufeedme.models.country;
 
+
 import net.roughdesign.canyoufeedme.models.foodbalance.FoodBalance;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 
+
+
 /**
  * Created by Rough on 30/04/2015.
+ * All the available food data for a country.
  */
 public class CountryData
     {
@@ -21,16 +25,16 @@ public class CountryData
     // =============================================================================================
     // Member variables
     // =============================================================================================
-    public final int year;
+    public final String[] availableYears;
     public final FoodBalance foodBalance;
 
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    private CountryData(int year, FoodBalance foodBalance)
+    private CountryData(String[] availableYears, FoodBalance foodBalance)
         {
-        this.year = year;
+       this.availableYears = availableYears;
         this.foodBalance = foodBalance;
         }
 
@@ -50,7 +54,12 @@ public class CountryData
     static public CountryData readFromWeb(String countryCode, int year) throws IOException, JSONException
         {
         FoodBalance foodBalance = FoodBalance.getFromWeb(countryCode, year);
-        return new CountryData(year, foodBalance);
+        final String[] YEARS = new String[]{"1990", "1991", "1992", "1993", "1994",
+                "1995", "1996", "1997", "1998", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
+                "2007", "2008", "2009", "2010"};
+
+
+        return new CountryData(YEARS, foodBalance);
         }
 
 
@@ -61,17 +70,6 @@ public class CountryData
     // =============================================================================================
     // Member methods
     // =============================================================================================
-
-
-    /**
-     * arg
-     *
-     * @return The total amount of edible food rom animals and crops.
-     */
-    public double getKcalPerPersonPerDay()
-        {
-        return foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay;
-        }
 
 
     // =============================================================================================

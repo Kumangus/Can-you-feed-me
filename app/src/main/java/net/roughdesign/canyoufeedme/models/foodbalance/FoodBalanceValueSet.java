@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 /**
  * Created by Rough on 29/04/2015.
+ * Contains all the different measures for an item in a food balance sheet from FAO.
  */
 public class FoodBalanceValueSet
     {
@@ -12,22 +13,22 @@ public class FoodBalanceValueSet
     // DB keys, see: http://data.fao.org/developers/api/v1/en/resources/faostat/fbs/measures.xml?page=1&pageSize=50&fields=mnemonic%2Clabel%40en&sort=label%40en
     // =============================================================================================
     static private final String KEY_DISPLAY_NAME = "Item";
-    static public final String KEY_DOMESTIC_SUPPLY_QUANTITY___1000_T = "m5301";
-    static public final String KEY_EXPORT_QUANTITY___1000_T = "m5911";
-    static public final String KEY_FAT_SUPPLY_QUANTITY___G_PER_CAPITA_PER_DAY = "m684";
-    static public final String KEY_FEED___1000_T = "m5521";
-    static public final String KEY_FOOD___1000_T = "m5142";
-    static public final String KEY_FOOD_SUPPLY___KCAL_PER_CAPITA_PER_DAY = "m664";
-    static public final String KEY_FOOD_SUPPLY_QUANTITY___KG_PER_CAPITA_PER_YEAR = "m645";
-    static public final String KEY_IMPORT_QUANTITY___1000_T = "m5611";
-    static public final String KEY_OTHER_UTIL___1000_T_UPDATED = "m5154";
-    static public final String KEY_PROCESSED___1000_T = "m5131";
-    static public final String KEY_PRODUCTION_QUANTITY___1000_T = "m5511";
-    static public final String KEY_PROTEIN_SUPPLY_QUANTITY___G_PER_CAPITA_PER_DAY = "m674";
-    static public final String KEY_SEED___1000_T = "m5527";
-    static public final String KEY_STOCK_VARIATION___1000_T = "m5072";
-    static public final String KEY_TOTAL_POPULATION___BOTH_SEXES___1000 = "m511";
-    static public final String KEY_WASTE___1000_TONNES = "m5123";
+    static private final String KEY_DOMESTIC_SUPPLY_QUANTITY___1000_T = "m5301";
+    static private final String KEY_EXPORT_QUANTITY___1000_T = "m5911";
+    static private final String KEY_FAT_SUPPLY_QUANTITY___G_PER_CAPITA_PER_DAY = "m684";
+    static private final String KEY_FEED___1000_T = "m5521";
+    static private final String KEY_FOOD___1000_T = "m5142";
+    static private final String KEY_FOOD_SUPPLY___KCAL_PER_CAPITA_PER_DAY = "m664";
+    static private final String KEY_FOOD_SUPPLY_QUANTITY___KG_PER_CAPITA_PER_YEAR = "m645";
+    static private final String KEY_IMPORT_QUANTITY___1000_T = "m5611";
+    static private final String KEY_OTHER_UTIL___1000_T_UPDATED = "m5154";
+    static private final String KEY_PROCESSED___1000_T = "m5131";
+    static private final String KEY_PRODUCTION_QUANTITY___1000_T = "m5511";
+    static private final String KEY_PROTEIN_SUPPLY_QUANTITY___G_PER_CAPITA_PER_DAY = "m674";
+    static private final String KEY_SEED___1000_T = "m5527";
+    static private final String KEY_STOCK_VARIATION___1000_T = "m5072";
+    static private final String KEY_TOTAL_POPULATION___BOTH_SEXES___1000 = "m511";
+    static private final String KEY_WASTE___1000_TONNES = "m5123";
 
 
     // =============================================================================================
@@ -41,29 +42,30 @@ public class FoodBalanceValueSet
     // =============================================================================================
     // Member variables
     // =============================================================================================
-    public final String displayName;
-    public final double domesticSupplyInThousandTons;
-    public final double exportInThousandTons;
-    public final double fatSupplyInGramPerPersonPerDay;
-    public final double feedInThousandTons;
-    public final double foodInThousandTons;
-    public final double foodSupplyInKcalPerPersonPerDay;
-    public final double foodSupplyInKgPerPersonPerYear;
-    public final double importInThousandTons;
-    public final double otherUtilInThousandTonsUpdated;
-    public final double processedInThousandTons;
-    public final double productionInThousandTons;
-    public final double proteinSupplyInGramPerPersonPerDay;
-    public final double seedInThousandTonsUpdated;
-    public final double stockVariationInThousandTons;
-    public final double totalPopulationInThousand;
-    public final double wasteInThousandTons;
+    @SuppressWarnings("unused")
+    private final String displayName;
+    private final double domesticSupplyInThousandTons;
+    private final double exportInThousandTons;
+    private final double fatSupplyInGramPerPersonPerDay;
+    private final double feedInThousandTons;
+    private final double foodInThousandTons;
+    private final double foodSupplyInKcalPerPersonPerDay;
+    private final double foodSupplyInKgPerPersonPerYear;
+    private final double importInThousandTons;
+    private final double otherUtilInThousandTonsUpdated;
+    private final double processedInThousandTons;
+    private final double productionInThousandTons;
+    private final double proteinSupplyInGramPerPersonPerDay;
+    private final double seedInThousandTonsUpdated;
+    private final double stockVariationInThousandTons;
+    private final double totalPopulationInThousand;
+    private final double wasteInThousandTons;
 
 
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    public FoodBalanceValueSet(
+    private FoodBalanceValueSet(
             final String displayName,
             double domesticSupplyInThousandTons,
             double exportInThousandTons,
@@ -164,6 +166,12 @@ public class FoodBalanceValueSet
                 wasteInThousandTons + other.wasteInThousandTons
         );
         }
+
+    public double getFoodSupplyInKcalPerPersonPerDay()
+        {
+        return foodSupplyInKcalPerPersonPerDay;
+        }
+
 
     // =============================================================================================
     // Inner classes

@@ -17,6 +17,7 @@ import java.util.Map;
  * @author Rough
  *
  */
+@SuppressWarnings("unused")
 public class CropProduction extends Web
     {
     // ================================================
@@ -214,7 +215,7 @@ public class CropProduction extends Web
     private static final String LINK_FILTER = "&filter=cnt.iso2 eq %s and year eq %d";
     private static final String LINK_FIELDS = "&fields=item, item.bk as item_code, m5312, m5510, m5525, m5419";
 
-    private final HashMap<Integer, FoodProductionValueSet> entries = new HashMap<Integer, FoodProductionValueSet>();
+    private final HashMap<Integer, FoodProductionValueSet> entries = new HashMap<>();
 
 
     // ================================================

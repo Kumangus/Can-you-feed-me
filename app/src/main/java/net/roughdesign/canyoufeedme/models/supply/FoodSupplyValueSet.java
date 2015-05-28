@@ -1,10 +1,15 @@
 package net.roughdesign.canyoufeedme.models.supply;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+
 /**
  * Created by Rough on 29/04/2015.
+ * A class containing the different measures for items in the 'Food supply fish and livestock'
+ * database from FAO.
  */
 public class FoodSupplyValueSet
     {
@@ -30,25 +35,26 @@ public class FoodSupplyValueSet
     // =============================================================================================
     // MEMBER VARIABLES
     // =============================================================================================
-    public final String displayName;
-    public final double fatSupplyInGramPerPersonPerDay;
-    public final double foodSupplyInKcalPerPersonPerDay;
-    public final double foodSupplyInGramPerPersonPerDay;
-    public final double foodSupplyInKiloPerPersonPerYear;
-    public final double foodSupplyInTonsTotal;
-    public final double proteinSupplyInGramPerPersonPerDay;
+    @SuppressWarnings("unused")
+    private final String displayName;
+    private final double fatSupplyInGramPerPersonPerDay;
+    private final double foodSupplyInKcalPerPersonPerDay;
+    private final double foodSupplyInGramPerPersonPerDay;
+    private final double foodSupplyInKiloPerPersonPerYear;
+    private final double foodSupplyInTonsTotal;
+    private final double proteinSupplyInGramPerPersonPerDay;
 
 
     // =============================================================================================
     // CONSTRUCTOR 
     // =============================================================================================
-    public FoodSupplyValueSet(final String displayName,
-                              final double fatSupplyInGramPerPersonPerDay,
-                              final double foodSupplyInKcalPerPersonPerDay,
-                              final double foodSupplyInGramPerPersonPerDay,
-                              final double foodSupplyInKiloPerPersonPerYear,
-                              final double foodSupplyInTonsTotal,
-                              final double proteinSupplyInGramPerPersonPerDay)
+    private FoodSupplyValueSet(final String displayName,
+                               final double fatSupplyInGramPerPersonPerDay,
+                               final double foodSupplyInKcalPerPersonPerDay,
+                               final double foodSupplyInGramPerPersonPerDay,
+                               final double foodSupplyInKiloPerPersonPerYear,
+                               final double foodSupplyInTonsTotal,
+                               final double proteinSupplyInGramPerPersonPerDay)
         {
         this.displayName = displayName;
         this.fatSupplyInGramPerPersonPerDay = fatSupplyInGramPerPersonPerDay;
@@ -87,7 +93,7 @@ public class FoodSupplyValueSet
 
         for (FoodSupplyValueSet entry : toAdd)
             {
-            if(entry != null)
+            if (entry != null)
                 {
                 fatSupplyInGramPerPersonPerDay += entry.fatSupplyInGramPerPersonPerDay;
                 foodSupplyInCalPerPersonPerDay += entry.foodSupplyInKcalPerPersonPerDay;
@@ -114,21 +120,12 @@ public class FoodSupplyValueSet
     // =============================================================================================
     public String toString()
         {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("fatSupplyInGramPerPersonPerDay: ");
-        stringBuilder.append(fatSupplyInGramPerPersonPerDay);
-        stringBuilder.append("foodSupplyInKcalPerPersonPerDay: ");
-        stringBuilder.append(foodSupplyInKcalPerPersonPerDay);
-        stringBuilder.append("foodSupplyInGramPerPersonPerDay: ");
-        stringBuilder.append(foodSupplyInGramPerPersonPerDay);
-        stringBuilder.append("foodSupplyInKiloPerPersonPerYear: ");
-        stringBuilder.append(foodSupplyInKiloPerPersonPerYear);
-        stringBuilder.append("foodSupplyInTonsTotal: ");
-        stringBuilder.append(foodSupplyInTonsTotal);
-        stringBuilder.append("proteinSupplyInGramPerPersonPerDay: ");
-        stringBuilder.append(proteinSupplyInGramPerPersonPerDay);
-
-        return stringBuilder.toString();
+        return "fatSupplyInGramPerPersonPerDay: " + fatSupplyInGramPerPersonPerDay
+                + "foodSupplyInKcalPerPersonPerDay: " + foodSupplyInKcalPerPersonPerDay
+                + "foodSupplyInGramPerPersonPerDay: " + foodSupplyInGramPerPersonPerDay
+                + "foodSupplyInKiloPerPersonPerYear: " + foodSupplyInKiloPerPersonPerYear
+                + "foodSupplyInTonsTotal: " + foodSupplyInTonsTotal
+                + "proteinSupplyInGramPerPersonPerDay: " + proteinSupplyInGramPerPersonPerDay;
         }
 
     }

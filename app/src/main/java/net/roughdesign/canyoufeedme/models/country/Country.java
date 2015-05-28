@@ -18,6 +18,8 @@ import java.util.List;
 
 /**
  * Created by Rough on 30/04/2015.
+ * A class to hold the country code and year to be queried from FAO,
+ * as well as the country name and the actual queried CountryData.
  */
 public class Country
     {
@@ -27,7 +29,7 @@ public class Country
     // =============================================================================================
     static public Country current;
 
-    static private List<Country> allCountries = new ArrayList<>();
+    static private final List<Country> allCountries = new ArrayList<>();
 
     @SuppressWarnings("unused")
     static private final String TAG = "Country";
@@ -48,7 +50,7 @@ public class Country
     // =============================================================================================
     // Constructor
     // =============================================================================================
-    public Country(String code, String name, LatLngBounds latLngBounds)
+    private Country(String code, String name, LatLngBounds latLngBounds)
         {
         this.code = code;
         this.name = name;

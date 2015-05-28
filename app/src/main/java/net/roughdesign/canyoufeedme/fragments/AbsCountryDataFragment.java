@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.support.v4.app.Fragment;
@@ -10,6 +10,8 @@ import net.roughdesign.canyoufeedme.models.country.CountryData;
 
 /**
  * Created by Rough on 03/05/2015.
+ * Base class in order to use the three Fragments {@link AssessmentFragment},
+ * {@link DiversityFragment} and {@link MapFragment} in a list.
  */
 abstract public class AbsCountryDataFragment extends Fragment implements GetCountryDataAsyncTask.OnCountryDataRetrievedListener
     {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="net.roughdesign.canyoufeedme"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -17,8 +18,8 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/global__app_name"
-        android:logo="@drawable/logo"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity
             android:name=".activities.StartupActivity"
             android:label="@string/global__app_name"
@@ -31,7 +32,8 @@
         </activity>
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:label="@string/global__app_name">
+            android:label="@string/global__app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.WorldMapActivity"
@@ -42,7 +44,8 @@
         <activity
             android:name=".activities.CountryDataActivity"
             android:label="@string/global__app_name"
-            android:parentActivityName=".activities.WorldMapActivity">
+            android:screenOrientation="portrait"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.roughdesign.canyoufeedme.activities.WorldMapActivity"/>

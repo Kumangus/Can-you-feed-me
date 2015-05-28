@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.os.Bundle;
@@ -47,7 +47,7 @@ public class AssessmentFragment extends AbsCountryDataFragment
         AssessmentChartFragment chart = (AssessmentChartFragment) getChildFragmentManager()
                 .findFragmentById(R.id.country_data__assessment__graphic);
         chart.onCountryDataRetrieved(result);
-        produced.setText(result.foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay + "");
+        produced.setText(result.foodBalance.getEdibleFood().getFoodSupplyInKcalPerPersonPerDay() + "");
         //imported.setText(Long.toString(countryData.getTotalImportInTons()) + " t");
         //exported.setText(Long.toString(countryData.getTotalExportInTons()) + " t");
         needed.setText(FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY + "");

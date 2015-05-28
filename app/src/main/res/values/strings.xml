@@ -1,7 +1,6 @@
 <resources>
 
     <!-- Placeholders ========================================================================== -->
-    <string name="ph__please_wait">Please wait&#8230;</string>
     <string name="ph__string">placeholder</string>
 
     <!-- Global ================================================================================ -->
@@ -9,38 +8,14 @@
     <string name="global__empty_value">-</string>
     <string name="global__cancel">Cancel</string>
     <string name="global__continue">Continue</string>
-    <string name="global__units__calories"> kcal</string>
-    <string name="global__units__calories_per_person"> kcal/person</string>
-    <string name="global__units__tons"> t</string>
 
 
     <!-- World Map screen ====================================================================== -->
-    <string name="world_map__searching">Searching country&#8230;</string>
     <string name="world_map__found_country">Found country automatically!</string>
-    <string name="world_map__cant_find_country">Can\'t find country</string>
     <string name="world_map__to_select_manual">Select manually:</string>
 
-    <!-- Country overview screen =============================================================== -->
-    <string name="country_overview__title">Country overview</string>
-    <string name="country_overview__available_headline">Available (kcal/person/day)</string>
-    <string name="country_overview__needed_headline">Needed (kcal/person/day)</string>
-    <string name="country_overview__result_headline">Surplus/Deficit (kcal/person/day)</string>
-    <string name="country_overview__more">More&#8230;</string>
-    <string name="country_overview__result__yes">Yes! Your country can feed you!</string>
-    <string name="country_overview__result__no">Your country can not feed you.</string>
-    <string name="country_overview__setting__change_year">Change year&#8230;</string>
-    <string name="country_overview__setting__change_trade">Change trade options</string>
-    <string name="country_overview__setting__change_crops">Change crops</string>
 
-    <string name="country_overview__dialog__year__title">Change year&#8230;</string>
-
-
-    <!-- Country detail screen ================================================================= -->
-    <string name="country_data__title">Country details</string>
-    <string name="country_data__amount">Amount</string>
-    <string name="country_data__diversity">Diversity</string>
-
-    <!-- Country detail screen - amount fragment =============================================== -->
+    <!-- Country data screen - amount fragment =============================================== -->
     <string name="country_data__assessment__produced">Food produced</string>
     <string name="country_data__assessment__imported">Food imported</string>
     <string name="country_data__assessment__exported">Food exported</string>
@@ -49,7 +24,7 @@
     <string name="country_data__assessment__all_in_kcal_person_day">All values in kcal/person/day</string>
 
 
-    <!-- Country detail screen - food diversity fragment ============================================ -->
+    <!-- Country data screen - food diversity fragment ============================================ -->
     <string name="country_data__diversity__fish">Fish</string>
     <string name="country_data__diversity__meat">Meat</string>
     <string name="country_data__diversity__animal_byproducts">Animal byproducts</string>
@@ -57,7 +32,7 @@
     <string name="country_data__diversity__produce">Produce</string>
     <string name="country_data__diversity__non_essentials">Non-essentials</string>
 
-    <!-- Country detail screen - food diversity details dialog ============================================ -->
+    <!-- Country data screen - food diversity details dialog ============================================ ->
     <string name="country_data__diversity__detail__fish">Fish</string>
     <string name="country_data__diversity__detail__meat">Meat</string>
     <string name="country_data__diversity__detail__animal_byproducts">Animal byproducts</string>
@@ -73,7 +48,7 @@
         %1$d available
     </string>
 
-    <!--
+    <!-
     <string name="country.consumption_headline">Consumption</string>
     <string name="country.available_headline">Available</string>
     <string name="country.potential_headline">Potentially fed</string>
@@ -87,13 +62,10 @@
         \'Can you feed me?\' needs an internet connection in order to work.
     </string>
     <string name="dialog.no_internet.positive_button">Retry</string>
-        <string name="title_activity_country_detail">CountryDetailActivity</string>
-        <string name="title_activity_test">TESTActivity</string>
+    <string name="dialog_year_selector__title">Please select a year.</string>
+
 
     <!-- Auto added ============================================================================ -->
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-        <string name="title_activity_data">DataActivity</string>
 
 
 </resources>

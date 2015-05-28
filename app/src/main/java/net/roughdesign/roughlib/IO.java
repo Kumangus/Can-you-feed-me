@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Rough on 14/04/2015.
+ * Helper to ease reading files in an android app.
  */
 public class IO
     {
@@ -18,6 +19,7 @@ public class IO
         InputStream inputStream = context.getResources().openRawResource(fileResourceId);
 
         byte[] data = new byte[inputStream.available()];
+        //noinspection ResultOfMethodCallIgnored
         inputStream.read(data);
         inputStream.close();
         return new String(data);
@@ -26,7 +28,7 @@ public class IO
 
     static public ArrayList<String> readLinesFromStream(InputStream inputStream) throws IOException
         {
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);

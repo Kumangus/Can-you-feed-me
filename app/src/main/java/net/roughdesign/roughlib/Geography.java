@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by Rough on 13/04/2015.
+ * Convenience class for Android's location services.
  */
 public class Geography
     {
@@ -24,10 +25,29 @@ public class Geography
     // =============================================================================================
     // Public methods
     // =============================================================================================
+
+
+    /**
+     * @return The last known Address according to the best LocationManager, or null
+     */
+    static public Address getAddress(Context context)
+        {
+        Location location = getLastKnownLocation(context);
+
+        if (location == null)
+            {
+            return null;
+            }
+        return getAddress(context, location);
+        }
+
+    // =============================================================================================
+    // Private methods
+    // =============================================================================================
     /**
      * @return The last known Location of the device, or null
      */
-    static public Location getLastKnownLocation(Context context)
+    static private Location getLastKnownLocation(Context context)
         {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         String nameOfBestProvider = locationManager.getBestProvider(new Criteria(), true);
@@ -37,7 +57,6 @@ public class Geography
             }
         return locationManager.getLastKnownLocation(nameOfBestProvider);
         }
-
 
     /**
      * @return The best known Address for this Location, or null
@@ -63,22 +82,7 @@ public class Geography
         }
 
 
-    /**
-     * @return The last known Address according to the best LocationManager, or null
-     */
-    static public Address getAddress(Context context)
-        {
-        Location location = getLastKnownLocation(context);
 
-        if (location == null)
-            {
-            return null;
-            }
-        return getAddress(context, location);
-        }
 
-    // =============================================================================================
-    // Private methods
-    // =============================================================================================
 
-        }
+    }

@@ -14,8 +14,6 @@
 
     <!-- Special dimensions -->
     <dimen name="world_map__map_height">220dp</dimen>
-    <dimen name="world_map__automatic_height">90dp</dimen>
-    <dimen name="country_data__map_height">320dp</dimen>
     <dimen name="country_data__assessment__chart_height">256dp</dimen>
     <dimen name="country_data__diversity__chart_height">256dp</dimen>
 

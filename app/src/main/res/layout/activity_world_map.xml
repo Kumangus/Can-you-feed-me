@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
@@ -29,21 +29,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/world_map.automatic.label"
-                android:text="@string/world_map__searching"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/margin__small"
-                android:layout_marginTop="@dimen/margin__big"
-                android:visibility="gone"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/world_map__to_select_manual"
                 android:id="@+id/world_map__manual_selector__headline"
                 android:layout_marginLeft="@dimen/margin__big"
-                />
+                android:layout_marginTop="@dimen/margin__big"/>
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -59,9 +48,9 @@
                 android:text="@string/global__continue"
                 android:id="@+id/world_map.to_country_detail"
                 android:layout_gravity="right"
-                android:paddingEnd="@dimen/margin__small"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                android:padding="@dimen/margin__small"/>
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+</merge>

@@ -3,9 +3,8 @@
 
     <style name="CyfmBorderlessButton" parent="android:Widget.Holo.Button.Borderless">
         <item name="android:textColor">@color/cyfm_blue_light</item>
+        <item name="android:textAllCaps">true</item>
     </style>
-
-
 
 
 </resources>

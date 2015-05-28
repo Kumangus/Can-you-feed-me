@@ -1,4 +1,4 @@
-package net.roughdesign.canyoufeedme.fragments.countrydata;
+package net.roughdesign.canyoufeedme.fragments;
 
 
 import android.os.Bundle;
@@ -43,8 +43,8 @@ public class AssessmentChartFragment extends Fragment
     private FrameLayout chartFrame;
     private GraphicalView chartView;
 
-    private XYMultipleSeriesDataset xyDataset = new XYMultipleSeriesDataset();
-    private XYMultipleSeriesRenderer xyRenderer = new XYMultipleSeriesRenderer();
+    private final XYMultipleSeriesDataset xyDataset = new XYMultipleSeriesDataset();
+    private final XYMultipleSeriesRenderer xyRenderer = new XYMultipleSeriesRenderer();
 
 
     // =============================================================================================
@@ -107,11 +107,11 @@ public class AssessmentChartFragment extends Fragment
     private void setupChartData(CountryData countryData)
         {
         FoodBalance foodBalance = countryData.foodBalance;
-        addValue(1, foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay);
+        addValue(1, foodBalance.getEdibleFood().getFoodSupplyInKcalPerPersonPerDay());
         addValue(2, FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY);
         addValue(3, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
         //addValue(4, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
-        Log.e(TAG, "foodSupplyInKcalPerPersonPerDay" + foodBalance.getEdibleFood().foodSupplyInKcalPerPersonPerDay
+        Log.e(TAG, "foodSupplyInKcalPerPersonPerDay" + foodBalance.getEdibleFood().getFoodSupplyInKcalPerPersonPerDay()
                 + "ADVISED_KCAL_PER_PERSON_PER_DAY" + FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY
                 + "getSurplusOrDeficitInKcalPerPersonPerDay" + foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
         //addData(3, R.string.country_detail__amount_exported, -countryData.getTotalExportInTons());

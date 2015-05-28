@@ -18,6 +18,7 @@ import java.util.Map;
 /**
  * @author Rough
  */
+@SuppressWarnings("unused")
 public class Population extends Web
     {
     // ================================================
@@ -25,11 +26,11 @@ public class Population extends Web
     // http://data.fao.org/developers/api/v1/en/resources/faostat/pop/item/members.xml?page=1&pageSize=10&fields=mnemonic%2Clabel%40en%2Cproperties.*&sort=label%40en
     // ================================================
 
-    static public final int KEY_RURAL_POPULATION_IN_THOUSANDS = 551;
-    static public final int KEY_TOTAL_POPULATION_BOTH_SEXES_IN_THOUSANDS = 511;
-    static public final int KEY_TOTAL_POPULATION_FEMALE_IN_THOUSANDS = 513;
-    static public final int KEY_TOTAL_POPULATION_MALE_IN_THOUSANDS = 512;
-    static public final int KEY_URBAN_POPULATION_IN_THOUSANDS = 561;
+    static private final int KEY_RURAL_POPULATION_IN_THOUSANDS = 551;
+    static private final int KEY_TOTAL_POPULATION_BOTH_SEXES_IN_THOUSANDS = 511;
+    static private final int KEY_TOTAL_POPULATION_FEMALE_IN_THOUSANDS = 513;
+    static private final int KEY_TOTAL_POPULATION_MALE_IN_THOUSANDS = 512;
+    static private final int KEY_URBAN_POPULATION_IN_THOUSANDS = 561;
 
 
     // ================================================
@@ -39,7 +40,7 @@ public class Population extends Web
     private static final String LINK_FILTER = "&filter=cnt.iso2 eq %s and year eq %d";
     private static final String LINK_FIELDS = "&fields=item, item.bk as item_code, m3010";
 
-    private final HashMap<Integer, PopulationValueSet> entries = new HashMap<Integer, PopulationValueSet>();
+    private final HashMap<Integer, PopulationValueSet> entries = new HashMap<>();
 
 
     // ================================================

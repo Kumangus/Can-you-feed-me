@@ -2,11 +2,12 @@ package net.roughdesign.canyoufeedme.activities;
 
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,9 +15,10 @@ import android.widget.ViewAnimator;
 
 import net.roughdesign.canyoufeedme.R;
 import net.roughdesign.canyoufeedme.asynctasks.GetCountryDataAsyncTask;
-import net.roughdesign.canyoufeedme.fragments.countrydata.AbsCountryDataFragment;
-import net.roughdesign.canyoufeedme.fragments.countrydata.AssessmentFragment;
-import net.roughdesign.canyoufeedme.fragments.countrydata.MapFragment;
+import net.roughdesign.canyoufeedme.dialogs.YearSelectorFragment;
+import net.roughdesign.canyoufeedme.fragments.AbsCountryDataFragment;
+import net.roughdesign.canyoufeedme.fragments.AssessmentFragment;
+import net.roughdesign.canyoufeedme.fragments.MapFragment;
 import net.roughdesign.canyoufeedme.models.country.Country;
 import net.roughdesign.canyoufeedme.models.country.CountryData;
 
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 
 
 
-public class CountryDataActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener, GetCountryDataAsyncTask.OnCountryDataRetrievedListener
+public class CountryDataActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, GetCountryDataAsyncTask.OnCountryDataRetrievedListener
     {
     // =============================================================================================
     // Class variables
@@ -43,6 +45,7 @@ public class CountryDataActivity extends ActionBarActivity implements ViewPager.
     // Member variables
     // =============================================================================================
     private ViewAnimator loadAnimator;
+    private TextView titleYear;
     private ViewPager viewPager;
     private ImageView toMap;
     private ImageView toAssessment;
@@ -73,7 +76,6 @@ public class CountryDataActivity extends ActionBarActivity implements ViewPager.
 
         setupTitle();
         loadAnimator = (ViewAnimator) findViewById(R.id.country_data__loading_animator);
-        loadAnimator.setDisplayedChild(LOAD_ANIMATOR_ANIMATION);
 
         setupViewPager();
         setupToMap();
@@ -142,9 +144,20 @@ public class CountryDataActivity extends ActionBarActivity implements ViewPager.
     private void setupTitle()
         {
         TextView titleCountry = (TextView) findViewById(R.id.country_data__title__country);
-        titleCountry.setText(Country.current.name);
-        TextView titleYear = (TextView) findViewById(R.id.country_data__title__year);
-        titleYear.setText(Integer.toString(Country.current.year));
+        // TODO cleanup
+        String countryString = Country.current.name;
+        titleCountry.setText(countryString);
+
+        titleYear = (TextView) findViewById(R.id.country_data__title__year);
+        titleYear.setOnClickListener(new View.OnClickListener()
+        {
+        @Override
+        public void onClick(View v)
+            {
+            DialogFragment dialog = new YearSelectorFragment();
+            dialog.show(getSupportFragmentManager(), "YearSelectorFragment");
+            }
+        });
         }
 
 
@@ -219,8 +232,10 @@ public class CountryDataActivity extends ActionBarActivity implements ViewPager.
         }*/
 
 
-    private void loadCountryData()
+    public void loadCountryData()
         {
+        loadAnimator.setDisplayedChild(LOAD_ANIMATOR_ANIMATION);
+        titleYear.setText(Integer.toString(Country.current.year));
         GetCountryDataAsyncTask asyncTask = new GetCountryDataAsyncTask();
         asyncTask.addListener(this);
         for (AbsCountryDataFragment fragment : fragments)

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +27,7 @@ import net.roughdesign.roughlib.Geography;
  * Created by Rough on 11/04/2015.
  * The Activity for the world map screen.
  */
-public class WorldMapActivity extends ActionBarActivity implements OnMapReadyCallback,
+public class WorldMapActivity extends AppCompatActivity implements OnMapReadyCallback,
         CountrySelectionSpinnerHandler.OnCountrySelectedListener
     {
     // =============================================================================================
@@ -36,7 +36,6 @@ public class WorldMapActivity extends ActionBarActivity implements OnMapReadyCal
     static private final String TAG = "WorldMapActivity";
 
     private SupportMapFragment worldMapFragment;
-    // TODO cleanup private TextView automaticLabelView;
     private TextView manualSelectorHeadline;
     private CountrySelectionSpinnerHandler spinnerHandler;
     private Button toCountryDetailView;
@@ -82,7 +81,6 @@ public class WorldMapActivity extends ActionBarActivity implements OnMapReadyCal
     private void assignGuiElements()
         {
         worldMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.world_map_map);
-        // TODO cleanup automaticLabelView = (TextView) findViewById(R.id.world_map_automatic_label);
         manualSelectorHeadline = (TextView) findViewById(R.id.world_map__manual_selector__headline);
         spinnerHandler = new CountrySelectionSpinnerHandler(this, this);
         setupToCountryDetailView();
@@ -125,10 +123,8 @@ public class WorldMapActivity extends ActionBarActivity implements OnMapReadyCal
         protected void onPostExecute(Country result)
             {
             Country.current = result;
-            // TODO cleanup automaticLabelView.setText(R.string.world_map__cant_find_country);
             if (result != null)
                 {
-                // TODO cleanup automaticLabelView.setText(R.string.world_map__found_country);
                 Toast toast = Toast.makeText(WorldMapActivity.this, R.string.world_map__found_country, Toast.LENGTH_LONG);
                 toast.getView().setBackgroundResource(R.color.cyfm_background_dark);
                 toast.show();
