@@ -8,7 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
-import net.roughdesign.canyoufeedme.helper.CSVHelper;
+import net.roughdesign.canyoufeedme.helper.TheCSVHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,8 +68,8 @@ public class Country
      */
     static public void populateList(Context context) throws IOException
         {
-        List<List<String>> countryCodeTable = CSVHelper.readFromDirectory(context, CSV_PATH_COUNTRY_CODES, true);
-        List<List<String>> countryBorderTable = CSVHelper.readFromDirectory(context, CSV_PATH_COUNTRY_BORDERS, false);
+        List<List<String>> countryCodeTable = TheCSVHelper.readFromDirectory(context, CSV_PATH_COUNTRY_CODES, true);
+        List<List<String>> countryBorderTable = TheCSVHelper.readFromDirectory(context, CSV_PATH_COUNTRY_BORDERS, false);
 
         for (List<String> codeRow : countryCodeTable)
             {

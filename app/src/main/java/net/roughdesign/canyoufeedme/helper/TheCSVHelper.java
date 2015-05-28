@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Rough on 30/04/2015.
  * Helper class for using the {@link CSVReader}.
  */
-public class CSVHelper
+public class TheCSVHelper
     {
 
     // =============================================================================================
