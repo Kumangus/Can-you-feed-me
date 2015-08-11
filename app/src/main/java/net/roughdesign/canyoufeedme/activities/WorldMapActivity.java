@@ -71,7 +71,7 @@ public class WorldMapActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onCountrySelected()
         {
-        googleMap.animateCamera(Country.current.getCameraUpdate());
+        //googleMap.animateCamera(Country.current.getCameraUpdate());
         }
 
 
