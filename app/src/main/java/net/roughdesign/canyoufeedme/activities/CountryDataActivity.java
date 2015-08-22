@@ -13,21 +13,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
 
+import net.roughdesign.api.Country;
+import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
 import net.roughdesign.canyoufeedme.asynctasks.GetCountryDataAsyncTask;
 import net.roughdesign.canyoufeedme.dialogs.YearSelectorFragment;
 import net.roughdesign.canyoufeedme.fragments.AbsCountryDataFragment;
 import net.roughdesign.canyoufeedme.fragments.AssessmentFragment;
 import net.roughdesign.canyoufeedme.fragments.MapFragment;
-import net.roughdesign.canyoufeedme.models.country.Country;
-import net.roughdesign.canyoufeedme.models.country.CountryData;
 
 import java.util.ArrayList;
 
 
 
-public class CountryDataActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, GetCountryDataAsyncTask.OnCountryDataRetrievedListener
-    {
+public class CountryDataActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener
+        , GetCountryDataAsyncTask.OnCountryDataRetrievedListener {
     // =============================================================================================
     // Class variables
     // =============================================================================================
@@ -49,7 +49,7 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
     private ViewPager viewPager;
     private ImageView toMap;
     private ImageView toAssessment;
-    //private ImageView pieChart;
+    private ImageView pieChart;
 
 
     private final ArrayList<AbsCountryDataFragment> fragments = new ArrayList<>();
@@ -69,8 +69,7 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-        {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country_data);
 
@@ -82,14 +81,13 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
         setupToAssessment();
         //setupToPieChart();
         loadCountryData();
-        }
+    }
 
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-        {
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        }
+    }
 
 
     /**
@@ -99,41 +97,35 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
      * @param position Position index of the new selected page.
      */
     @Override
-    public void onPageSelected(int position)
-        {
-        if (position == VIEWPAGER_MAP)
-            {
+    public void onPageSelected(int position) {
+        if (position == VIEWPAGER_MAP) {
             toMap.getDrawable().setAlpha(100);
             toAssessment.getDrawable().setAlpha(255);
             //pieChart.getDrawable().setAlpha(255);
-            }
-        else if (position == VIEWPAGER_ASSESSMENT)
-            {
+        }
+        else if (position == VIEWPAGER_ASSESSMENT) {
             toMap.getDrawable().setAlpha(255);
             toAssessment.getDrawable().setAlpha(100);
             //pieChart.getDrawable().setAlpha(255);
-            }
-        else if (position == VIEWPAGER_PIE_CHART)
-            {
+        }
+        else if (position == VIEWPAGER_PIE_CHART) {
             toMap.getDrawable().setAlpha(255);
             toAssessment.getDrawable().setAlpha(255);
-            //pieChart.getDrawable().setAlpha(100);
-            }
+            pieChart.getDrawable().setAlpha(100);
         }
+    }
 
 
     @Override
-    public void onPageScrollStateChanged(int state)
-        {
+    public void onPageScrollStateChanged(int state) {
 
-        }
+    }
 
 
     @Override
-    public void onCountryDataRetrieved(CountryData result)
-        {
+    public void onCountryDataRetrieved(Country result) {
         loadAnimator.setDisplayedChild(LOAD_ANIMATOR_CONTENT);
-        }
+    }
 
 
     // =============================================================================================
@@ -141,109 +133,93 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
     // =============================================================================================
 
 
-    private void setupTitle()
-        {
+    private void setupTitle() {
         TextView titleCountry = (TextView) findViewById(R.id.country_data__title__country);
-        // TODO cleanup
-        String countryString = Country.current.name;
+        String countryString = CanYouFeedMeApp.currentCountry.getName();
         titleCountry.setText(countryString);
 
         titleYear = (TextView) findViewById(R.id.country_data__title__year);
-        titleYear.setOnClickListener(new View.OnClickListener()
-        {
-        @Override
-        public void onClick(View v)
-            {
-            DialogFragment dialog = new YearSelectorFragment();
-            dialog.show(getSupportFragmentManager(), "YearSelectorFragment");
+        titleYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialog = new YearSelectorFragment();
+                dialog.show(getSupportFragmentManager(), "YearSelectorFragment");
             }
         });
-        }
+    }
 
 
-    private void setupViewPager()
-        {
+    private void setupViewPager() {
         fragments.add(new MapFragment());
         fragments.add(new AssessmentFragment());
-        // fragments.add(new DiversityFragment());
+        //fragments.add(new DiversityFragment());
 
         viewPager = (ViewPager) findViewById(R.id.country_data__viewpager);
         viewPager.setOnPageChangeListener(this);
         viewPager.setAdapter(new CountryDataAdapter(getSupportFragmentManager()));
-        }
+    }
 
 
-    private void setupToMap()
-        {
+    private void setupToMap() {
         toMap = (ImageView) findViewById(R.id.country_data__icons__map);
         toMap.setOnClickListener(
-                new View.OnClickListener()
-                {
+                new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v)
-                    {
-                    viewPager.setCurrentItem(VIEWPAGER_MAP);
-                    toMap.getDrawable().setAlpha(100);
-                    toAssessment.getDrawable().setAlpha(255);
-                    //pieChart.getDrawable().setAlpha(255);
+                    @Override
+                    public void onClick(View v) {
+                        viewPager.setCurrentItem(VIEWPAGER_MAP);
+                        toMap.getDrawable().setAlpha(100);
+                        toAssessment.getDrawable().setAlpha(255);
+                        //pieChart.getDrawable().setAlpha(255);
                     }
                 }
         );
         toMap.getDrawable().setAlpha(100);
-        }
+    }
 
 
-    private void setupToAssessment()
-        {
+    private void setupToAssessment() {
         toAssessment = (ImageView) findViewById(R.id.country_data__icons__graph);
         toAssessment.setOnClickListener(
-                new View.OnClickListener()
-                {
-                @Override
-                public void onClick(View v)
-                    {
-                    viewPager.setCurrentItem(VIEWPAGER_ASSESSMENT);
-                    toMap.getDrawable().setAlpha(255);
-                    toAssessment.getDrawable().setAlpha(100);
-                    //pieChart.getDrawable().setAlpha(255);
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewPager.setCurrentItem(VIEWPAGER_ASSESSMENT);
+                        toMap.getDrawable().setAlpha(255);
+                        toAssessment.getDrawable().setAlpha(100);
+                        //pieChart.getDrawable().setAlpha(255);
                     }
                 }
         );
-        }
+    }
 
 
-    /*private void setupToPieChart()
-        {
+    private void setupToPieChart() {
         pieChart = (ImageView) findViewById(R.id.country_data__icons__pie_chart);
         pieChart.setOnClickListener(
-                new View.OnClickListener()
-                {
-                @Override
-                public void onClick(View v)
-                    {
-                    viewPager.setCurrentItem(VIEWPAGER_PIE_CHART);
-                    toMap.getDrawable().setAlpha(255);
-                    toAssessment.getDrawable().setAlpha(255);
-                    pieChart.getDrawable().setAlpha(100);
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewPager.setCurrentItem(VIEWPAGER_PIE_CHART);
+                        toMap.getDrawable().setAlpha(255);
+                        toAssessment.getDrawable().setAlpha(255);
+                        pieChart.getDrawable().setAlpha(100);
                     }
                 }
         );
-        }*/
+    }
 
 
-    public void loadCountryData()
-        {
+    public void loadCountryData() {
         loadAnimator.setDisplayedChild(LOAD_ANIMATOR_ANIMATION);
-        titleYear.setText(Integer.toString(Country.current.year));
+        titleYear.setText(Integer.toString(CanYouFeedMeApp.currentYear));
         GetCountryDataAsyncTask asyncTask = new GetCountryDataAsyncTask();
         asyncTask.addListener(this);
-        for (AbsCountryDataFragment fragment : fragments)
-            {
+        for (AbsCountryDataFragment fragment : fragments) {
             asyncTask.addListener(fragment);
-            }
-        asyncTask.execute(Country.current);
         }
+        asyncTask.execute(CanYouFeedMeApp.currentCountry);
+    }
 
     // =============================================================================================
     // Inner classes
@@ -251,26 +227,22 @@ public class CountryDataActivity extends AppCompatActivity implements ViewPager.
 
 
 
-    private class CountryDataAdapter extends FragmentPagerAdapter
-        {
-        public CountryDataAdapter(FragmentManager fm)
-            {
+    private class CountryDataAdapter extends FragmentPagerAdapter {
+        public CountryDataAdapter(FragmentManager fm) {
             super(fm);
-            }
-
-
-        @Override
-        public int getCount()
-            {
-            return fragments.size();
-            }
-
-
-        @Override
-        public Fragment getItem(int position)
-            {
-            return fragments.get(position);
-            }
-
         }
+
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
     }
+}

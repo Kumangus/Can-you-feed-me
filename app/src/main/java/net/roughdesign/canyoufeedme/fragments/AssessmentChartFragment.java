@@ -3,16 +3,14 @@ package net.roughdesign.canyoufeedme.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import net.roughdesign.api.Country;
 import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
-import net.roughdesign.canyoufeedme.models.country.CountryData;
-import net.roughdesign.canyoufeedme.models.foodbalance.FoodBalance;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -28,8 +26,7 @@ import org.achartengine.renderer.XYSeriesRenderer;
  * Created by Rough on 02/05/2015.
  * Fragment handling a barchart.
  */
-public class AssessmentChartFragment extends Fragment
-    {
+public class AssessmentChartFragment extends Fragment {
 
     // =============================================================================================
     // Class variables
@@ -62,71 +59,61 @@ public class AssessmentChartFragment extends Fragment
     // =============================================================================================
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-        {
+                             Bundle savedInstanceState) {
         chartFrame = (FrameLayout) inflater.inflate(R.layout.layout_frame, container);
 
         return chartFrame;
-        }
+    }
 
 
     @Override
-    public void onResume()
-        {
+    public void onResume() {
         super.onResume();
 
-        if (chartView == null)
-            {
+        if (chartView == null) {
             chartView = ChartFactory.getBarChartView(getActivity(),
                     xyDataset, xyRenderer, BarChart.Type.STACKED);
             //defaultRenderer.setClickEnabled(true);
             //defaultRenderer.setSelectableBuffer(10);
             chartFrame.addView(chartView, 0);
-            }
-        else
-            {
-            chartView.repaint();
-            }
         }
+        else {
+            chartView.repaint();
+        }
+    }
 
     // =============================================================================================
     // Member methods
     // =============================================================================================
 
 
-    public void onCountryDataRetrieved(CountryData countryData)
-        {
+    public void onCountryDataRetrieved(Country countryData) {
         setupChartData(countryData);
         setupRenderer();
-        }
+    }
 
 
     /**
      * Prepare the data for the chart.
      */
-    private void setupChartData(CountryData countryData)
-        {
-        FoodBalance foodBalance = countryData.foodBalance;
-        addValue(1, foodBalance.getEdibleFood().getFoodSupplyInKcalPerPersonPerDay());
-        addValue(2, FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY);
-        addValue(3, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
-        //addValue(4, foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
-        Log.e(TAG, "foodSupplyInKcalPerPersonPerDay" + foodBalance.getEdibleFood().getFoodSupplyInKcalPerPersonPerDay()
-                + "ADVISED_KCAL_PER_PERSON_PER_DAY" + FoodBalance.ADVISED_KCAL_PER_PERSON_PER_DAY
-                + "getSurplusOrDeficitInKcalPerPersonPerDay" + foodBalance.getSurplusOrDeficitInKcalPerPersonPerDay());
+    private void setupChartData(Country country) {
+        addValue(1, country.getFoodProducedInTons());
+        addValue(2, country.getFoodImportedInTons());
+        addValue(3, -country.getFoodExportedInTons());
+        addValue(4, country.getFoodBalanceInTons());
+
         //addData(3, R.string.country_detail__amount_exported, -countryData.getTotalExportInTons());
         //addData(4, R.string.country_detail__amount_needed, -countryData.getTotalFoodConsumedInTons());
         //addData(5, R.string.country_detail__amount_result, countryData.getEndResultValue());
 
         //xyRenderer.setXAxisMax(xyRenderer.getSeriesRenderers().length);
-        }
+    }
 
 
     /**
      * DRY method for setupChartData().
      */
-    private void addValue(int xPos, double value)
-        {
+    private void addValue(int xPos, double value) {
         XYSeries xySeries = new XYSeries("");
         xySeries.add(xPos, value);
         xyDataset.addSeries(xySeries);
@@ -135,14 +122,13 @@ public class AssessmentChartFragment extends Fragment
         int[] colours = CanYouFeedMeApp.from(getActivity()).getPrimaryColours();
         xySeriesRenderer.setColor(colours[(xPos - 1) % colours.length]);
         xyRenderer.addSeriesRenderer(xySeriesRenderer);
-        }
+    }
 
 
     /**
      * Set up the options for the chart renderer.
      */
-    private void setupRenderer()
-        {
+    private void setupRenderer() {
         xyRenderer.setShowAxes(false);
         xyRenderer.setShowGrid(true);
         xyRenderer.setShowGridY(false);
@@ -164,11 +150,11 @@ public class AssessmentChartFragment extends Fragment
 
         xyRenderer.setBackgroundColor(getResources().getColor(R.color.cyfm_background_dark));
         xyRenderer.setMarginsColor(getResources().getColor(R.color.cyfm_background_dark));
-        }
+    }
 
 
     // =============================================================================================
     // Inner classes
     // =============================================================================================
 
-    }
+}

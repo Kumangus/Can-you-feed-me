@@ -3,8 +3,8 @@ package net.roughdesign.canyoufeedme.fragments;
 
 import android.support.v4.app.Fragment;
 
+import net.roughdesign.api.Country;
 import net.roughdesign.canyoufeedme.asynctasks.GetCountryDataAsyncTask;
-import net.roughdesign.canyoufeedme.models.country.CountryData;
 
 
 
@@ -13,8 +13,7 @@ import net.roughdesign.canyoufeedme.models.country.CountryData;
  * Base class in order to use the three Fragments {@link AssessmentFragment},
  * {@link DiversityFragment} and {@link MapFragment} in a list.
  */
-abstract public class AbsCountryDataFragment extends Fragment implements GetCountryDataAsyncTask.OnCountryDataRetrievedListener
-    {
+abstract public class AbsCountryDataFragment extends Fragment implements GetCountryDataAsyncTask.OnCountryDataRetrievedListener {
 
     // =============================================================================================
     // Class variables
@@ -38,13 +37,14 @@ abstract public class AbsCountryDataFragment extends Fragment implements GetCoun
     // Overridden methods
     // =============================================================================================
 
+
     // =============================================================================================
     // Member methods
     // =============================================================================================
-    abstract public void onCountryDataRetrieved(CountryData result);
+    abstract public void onCountryDataRetrieved(Country result);
 
     // =============================================================================================
     // Inner classes
     // =============================================================================================
 
-    }
+}

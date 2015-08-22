@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                tools:context="net.roughdesign.canyoufeedme.activities.CountryDetailActivity"
+                tools:context="net.roughdesign.canyoufeedme.fragments.DiversityFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/country_data__diversity__chart_height"
         android:name="net.roughdesign.canyoufeedme.fragments.DiversityChartFragment"
-        android:id="@+id/fragment"
-        tools:layout="@layout/layout_frame"/>
+        android:id="@+id/country_data__diversity__graphic"
+        tools:layout="@layout/abc_screen_simple"/>
 
     <LinearLayout
         android:orientation="horizontal"

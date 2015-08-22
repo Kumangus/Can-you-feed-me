@@ -20,7 +20,7 @@
     <string name="country_data__assessment__imported">Food imported</string>
     <string name="country_data__assessment__exported">Food exported</string>
     <string name="country_data__assessment__needed">Food needed</string>
-    <string name="country_data__assessment__result">Result</string>
+    <string name="country_data__assessment__result">Balance</string>
     <string name="country_data__assessment__all_in_kcal_person_day">All values in kcal/person/day</string>
 
 

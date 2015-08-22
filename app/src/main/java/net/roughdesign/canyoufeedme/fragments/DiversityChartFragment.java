@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import net.roughdesign.api.Country;
 import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
-import net.roughdesign.canyoufeedme.models.country.CountryData;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -83,9 +83,9 @@ public class DiversityChartFragment extends Fragment
     // =============================================================================================
     // Member methods
     // =============================================================================================
-    public void onCountryDataRetrieved(CountryData countryData)
+    public void onCountryDataRetrieved(Country country)
         {
-        setupChartData(countryData);
+        setupChartData(country);
         setupRenderer();
         }
 
@@ -93,16 +93,14 @@ public class DiversityChartFragment extends Fragment
     /**
      * Prepare the data for the chart.
      */
-    private void setupChartData(CountryData countryData)
+    private void setupChartData(Country country)
         {
         // TODO reimplement
-        addDataItem(R.string.country_data__diversity__fish, 0);
-        //addDataItem(R.string.country_data__diversity__fish, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
-        //addDataItem(R.string.country_data__diversity__meat, countryData.foodBalance.getEdibleFood().domesticSupplyInThousandTons);
-        //addDataItem(R.string.country_detail__diversity_animal_byproducts, countryData.animalByProduce.getAvailablePerPersonPerDay());
-        //addDataItem(R.string.country_detail__diversity_cereals, countryData.cereals.getAvailablePerPersonPerDay());
-        //addDataItem(R.string.country_detail__diversity_produce, countryData.produce.getAvailablePerPersonPerDay());
-        //addDataItem(R.string.country_detail__diversity_non_essentials, countryData.nonEssentials.getAvailablePerPersonPerDay());*/
+        addDataItem(R.string.country_data__diversity__fish, country.getAvailableFishInTons());
+        addDataItem(R.string.country_data__diversity__meat, country.getAvailableMeatInTons());
+        addDataItem(R.string.country_data__diversity__animal_byproducts, country.getAvailableAnimalByproductsInTons());
+        addDataItem(R.string.country_data__diversity__cereals, country.getAvailableCerealsInTons());
+        addDataItem(R.string.country_data__diversity__produce, country.getAvailableProduceInTons());
         }
 
 

@@ -3,7 +3,6 @@ package net.roughdesign.canyoufeedme.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -13,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import net.roughdesign.canyoufeedme.R;
-import net.roughdesign.canyoufeedme.activities.CountryDataActivity;
-import net.roughdesign.canyoufeedme.models.country.Country;
 
 
 
@@ -61,13 +58,13 @@ public class YearSelectorFragment extends DialogFragment
 
         builder.setTitle(R.string.dialog_year_selector__title);
 
-        YearAdapter yearAdapter = new YearAdapter(Country.current.data.availableYears);
+        /*YearAdapter yearAdapter = new YearAdapter(OLDCountry.current.data.availableYears);
         builder.setSingleChoiceItems(yearAdapter, -1, new DialogInterface.OnClickListener()
         {
         public void onClick(DialogInterface dialog, int which)
             {
-            String yearString = Country.current.data.availableYears[which];
-            Country.current.year = Integer.parseInt(yearString);
+            String yearString = OLDCountry.current.data.availableYears[which];
+            OLDCountry.current.year = Integer.parseInt(yearString);
             ((CountryDataActivity) getActivity()).loadCountryData();
 
             //Intent intent = getActivity().getIntent();
@@ -75,7 +72,7 @@ public class YearSelectorFragment extends DialogFragment
             //startActivity(intent);
             dismiss();
             }
-        });
+        });*/
 
         return builder.create();
         }

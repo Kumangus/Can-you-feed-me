@@ -29,7 +29,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/country_data__assessment__all_in_kcal_person_day"
                 android:id="@+id/textView"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -81,7 +82,7 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:baselineAligned="false"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:orientation="vertical"

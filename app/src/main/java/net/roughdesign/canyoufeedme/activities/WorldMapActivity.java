@@ -16,10 +16,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import net.roughdesign.canyoufeedme.CanYouFeedMeApp;
 import net.roughdesign.canyoufeedme.R;
-import net.roughdesign.canyoufeedme.models.country.Country;
 import net.roughdesign.canyoufeedme.viewhandlers.CountrySelectionSpinnerHandler;
+import net.roughdesign.ownserverapi.OwnServerDatabase;
 import net.roughdesign.roughlib.Geography;
+import net.roughdesign.api.Country;
 
 
 
@@ -71,7 +73,7 @@ public class WorldMapActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     public void onCountrySelected()
         {
-        //googleMap.animateCamera(Country.current.getCameraUpdate());
+        googleMap.animateCamera(CanYouFeedMeApp.currentCountry.getCameraUpdate());
         }
 
 
@@ -115,14 +117,14 @@ public class WorldMapActivity extends AppCompatActivity implements OnMapReadyCal
             Address address = Geography.getAddress(WorldMapActivity.this);
             if (address == null)
                 return null;
-            return Country.getForCountryCode(address.getCountryCode());
+            return OwnServerDatabase.get().getForIsoCode(address.getCountryCode());
             }
 
 
         @Override
         protected void onPostExecute(Country result)
             {
-            Country.current = result;
+                CanYouFeedMeApp.currentCountry = result;
             if (result != null)
                 {
                 Toast toast = Toast.makeText(WorldMapActivity.this, R.string.world_map__found_country, Toast.LENGTH_LONG);
